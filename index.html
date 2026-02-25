@@ -332,6 +332,51 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Image Slideshow */
+.image-slideshow {
+    position: relative;
+    max-width: 500px;
+    overflow: hidden;
+}
+
+.slide-wrapper {
+    position: relative;
+}
+
+.slide-wrapper img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.slide-wrapper img.active {
+    display: block;
+}
+
+.slide-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.slide-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.3s ease;
+}
+
+.slide-dot.active {
+    background: var(--primary-color);
+}
+
 /* Benefits Section */
 .benefits {
     background: #f8f9fa;
@@ -562,7 +607,7 @@ h1, h2, h3, h4, h5, h6 {
         <div class="hero-container">
             <div class="hero-content">
                 <h1>Next-Gen Accounting Systems<br>for Forward-Thinking Business</h1>
-                <p>Spend less time on manual work and more time on your business. TikaPro handles <strong>Accounting Reports</strong>, <strong>Vendor Bills</strong>, <strong>Expense Management</strong>, and <strong>Daily Sales Recording</strong> — all in one platform.</p>
+                <p>Spend less time on manual work and more time on your business. TikaPro handles <strong>Accounting Reports</strong>, <strong>Vendor Bills</strong>, <strong>Expense Management</strong>, <strong>Revenue Recognition</strong>, <strong>Inventory Management</strong>, and many more — all in one platform.</p>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSfwLKZ4u7NIA1wlkmDhNYdQn9g1mm5R380w1uPNmoLCJThDOA/viewform" class="cta-button">Request a Demo</a>
             </div>
         </div>
@@ -577,21 +622,26 @@ h1, h2, h3, h4, h5, h6 {
                 <h3>Accounting Reports</h3>
                 <p>Balance sheets, P&L, and trial balance reports generated in real time.</p>
             </a>
-            <a href="#feature-vendor" class="feature-card">
+            <a href="#feature-bills-expense" class="feature-card">
                 <i class="fas fa-file-invoice-dollar"></i>
-                <h3>Vendor Bill Management</h3>
-                <p>Streamline bill entry, approval workflows, and payment tracking.</p>
-            </a>
-            <a href="#feature-expense" class="feature-card">
-                <i class="fas fa-receipt"></i>
-                <h3>Expense Management</h3>
-                <p>Capture receipts, enforce policies, and automate reimbursements.</p>
+                <h3>Bills & Expense Management</h3>
+                <p>Manage vendor bills, capture expense receipts, and automate approvals in one place.</p>
             </a>
             <a href="#feature-sales" class="feature-card">
                 <i class="fas fa-cash-register"></i>
-                <h3>Daily Sales Recording</h3>
-                <p>Record daily income and sales with categorized entries and reporting.</p>
+                <h3>Daily Sales & Revenue Recognition</h3>
+                <p>Record daily income, recognize revenue accurately, and generate trend reports.</p>
             </a>
+            <div class="feature-card">
+                <i class="fas fa-boxes"></i>
+                <h3>Inventory Management</h3>
+                <p>Track stock levels, manage products, and monitor inventory movement in real time.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-ellipsis-h"></i>
+                <h3>And Many More</h3>
+                <p>Procure-to-pay, cash advance, reimbursement, and ERP integrations like Xero.</p>
+            </div>
         </div>
     </section>
 
@@ -614,40 +664,32 @@ h1, h2, h3, h4, h5, h6 {
         </div>
     </section>
 
-    <!-- Feature: Vendor Bill Management -->
-    <section id="feature-vendor" style="background: var(--light-bg);">
+    <!-- Feature: Bills & Expense Management -->
+    <section id="feature-bills-expense" style="background: var(--light-bg);">
         <div class="feature-row reverse">
             <div class="feature-row-text">
-                <h2>Vendor Bill Management</h2>
-                <p>Centralize every vendor bill in one place. From entry to approval to payment — track the entire lifecycle with full audit trails, so nothing slips through the cracks.</p>
+                <h2>Bills & Expense Management</h2>
+                <p>Centralize vendor bills and employee expenses in one place. From bill entry to receipt capture, approval workflows to reimbursement — track the entire lifecycle with full audit trails.</p>
                 <ul class="feature-list">
                     <li><i class="fas fa-check-circle"></i> Centralized bill inbox with status tracking</li>
-                    <li><i class="fas fa-check-circle"></i> Multi-level approval workflows</li>
-                    <li><i class="fas fa-check-circle"></i> Automatic due date reminders</li>
-                    <li><i class="fas fa-check-circle"></i> Vendor ledger and aging reports</li>
-                </ul>
-            </div>
-            <div class="feature-row-image">
-                <img src="images/vendorbill.png" alt="Vendor Bill Management">
-            </div>
-        </div>
-    </section>
-
-    <!-- Feature: Expense Management -->
-    <section id="feature-expense" style="background: #fff;">
-        <div class="feature-row">
-            <div class="feature-row-text">
-                <h2>Expense Receipt Management</h2>
-                <p>Employees snap a photo of their receipt and submit — approvals, policy checks, and reimbursement tracking happen automatically. No more spreadsheets or lost receipts.</p>
-                <ul class="feature-list">
                     <li><i class="fas fa-check-circle"></i> Mobile receipt capture with OCR extraction</li>
+                    <li><i class="fas fa-check-circle"></i> Multi-level approval workflows</li>
+                    <li><i class="fas fa-check-circle"></i> Cash advance and reimbursement tracking</li>
+                    <li><i class="fas fa-check-circle"></i> Vendor ledger and aging reports</li>
                     <li><i class="fas fa-check-circle"></i> Configurable spending policies per department</li>
-                    <li><i class="fas fa-check-circle"></i> Cash advance and reimbursement workflows</li>
-                    <li><i class="fas fa-check-circle"></i> Real-time expense analytics and dashboards</li>
                 </ul>
             </div>
             <div class="feature-row-image">
-                <img src="images/expense.png" alt="Expense Receipt Management">
+                <div class="image-slideshow" id="bills-slideshow">
+                    <div class="slide-wrapper">
+                        <img src="images/vendorbill.png" alt="Vendor Bill Management" class="active">
+                        <img src="images/expense.png" alt="Expense Receipt Management">
+                    </div>
+                    <div class="slide-dots">
+                        <button class="slide-dot active" data-index="0"></button>
+                        <button class="slide-dot" data-index="1"></button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -656,11 +698,12 @@ h1, h2, h3, h4, h5, h6 {
     <section id="feature-sales" style="background: var(--light-bg);">
         <div class="feature-row reverse">
             <div class="feature-row-text">
-                <h2>Daily Sales Recording</h2>
-                <p>Record daily income across locations, categories, and payment methods. Spot revenue trends early and reconcile cash vs. digital payments effortlessly.</p>
+                <h2>Daily Sales & Revenue Recognition</h2>
+                <p>Record daily income across locations, categories, and payment methods. Recognize revenue accurately as it's earned — not just when cash is received — and reconcile effortlessly.</p>
                 <ul class="feature-list">
                     <li><i class="fas fa-check-circle"></i> Quick-entry forms for daily sales and income</li>
                     <li><i class="fas fa-check-circle"></i> Breakdown by category, location, or payment type</li>
+                    <li><i class="fas fa-check-circle"></i> Revenue recognition aligned with delivery or service completion</li>
                     <li><i class="fas fa-check-circle"></i> Automatic journal entries to your ledger</li>
                     <li><i class="fas fa-check-circle"></i> Daily, weekly, and monthly trend reports</li>
                 </ul>
