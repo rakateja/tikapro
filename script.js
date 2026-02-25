@@ -1,12 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const images = document.querySelectorAll('.hero-img');
-    let currentIndex = 0;
-
-    function rotateImages() {
-        images[currentIndex].classList.remove('active');
-        currentIndex = (currentIndex + 1) % images.length;
-        images[currentIndex].classList.add('active');
-    }
-
-    setInterval(rotateImages, 5000); // Change image every 5 seconds
-}); 
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+            var target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                var offset = document.querySelector('.navbar').offsetHeight + 16;
+                window.scrollTo({
+                    top: target.getBoundingClientRect().top + window.pageYOffset - offset,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
