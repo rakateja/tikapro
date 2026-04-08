@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+#------------------------------------------------------------------------------
+# @file
+# Builds a Hugo site hosted on Cloudflare Pages.
+# The Hugo site is located in the tikapro-site subdirectory.
+#------------------------------------------------------------------------------
+
+main() {
+
+  DART_SASS_VERSION=1.93.2
+  GO_VERSION=1.25.1
+  HUGO_VERSION=0.151.0
+  NODE_VERSION=22.18.0
+
+  export TZ=Asia/Jakarta
+
+  # Install Dart Sass
+  echo "Installing Dart Sass ${DART_SASS_VERSION}..."
+  curl -sLJO "https://github.com/sass/dart-sass/releases/download/${DART_SASS_VERSION}/dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz"
+  tar -C "${HOME}/.local" -xf "dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz"
+  rm "dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz"
+  export PATH="${HOME}/.local/dart-sass:${PATH}"
+
+  # Install Go
+  echo "Installing Go ${GO_VERSION}..."
+  curl -sLJO "https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz"
+  tar -C "${HOME}/.local" -xf "go${GO_VERSION}.linux-amd64.tar.gz"
+  rm "go${GO_VERSION}.linux-amd64.tar.gz"
+  export PATH="${HOME}/.local/go/bin:${PATH}"
+
+  # Install Hugo
+  echo "Hugo version: $(hugo version)"
+
+  # Install Node.js
+  echo "Installing Node.js ${NODE_VERSION}..."
+  curl -sLJO "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz"
+  tar -C "${HOME}/.local" -xf "node-v${NODE_VERSION}-linux-x64.tar.xz"
+  rm "node-v${NODE_VERSION}-linux-x64.tar.xz"
+  export PATH="${HOME}/.local/node-v${NODE_VERSION}-linux-x64/bin:${PATH}"
+
+  # Verify installations
+  echo "Verifying installations..."
+  echo Dart Sass: "$(sass --version)"
+  echo Go: "$(go version)"
+  echo Hugo: "$(hugo version)"
+  echo Node.js: "$(node --version)"
+
+  # Configure Git
+  echo "Configuring Git..."
+  git config core.quotepath false
+  if [ "$(git rev-parse --is-shallow-repository)" = "true" ]; then
+    git fetch --unshallow
+  fi
+
+  # Build the site from the tikapro-site subdirectory
+  echo "Building the site..."
+  hugo --gc --minify -s tikapro-site
+
+}
+
+set -euo pipefail
+main "$@"
