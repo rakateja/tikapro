@@ -3,30 +3,46 @@ document.addEventListener('DOMContentLoaded', function() {
     var mobileMenu = document.getElementById('mobile-menu');
 
     function closeMobileMenu() {
-        if (mobileMenu) {
-            mobileMenu.classList.remove('open');
-            hamburgerBtn.classList.remove('open');
-            hamburgerBtn.setAttribute('aria-expanded', 'false');
-        }
+        mobileMenu.classList.remove('open');
+        hamburgerBtn.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    function toggleMenu() {
+        var isOpen = mobileMenu.classList.toggle('open');
+        hamburgerBtn.classList.toggle('open', isOpen);
+        hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     }
 
     if (hamburgerBtn && mobileMenu) {
-        hamburgerBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            var isOpen = mobileMenu.classList.toggle('open');
-            hamburgerBtn.classList.toggle('open', isOpen);
-            hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        // touchend for iOS Safari — e.preventDefault() stops the 300ms synthetic click
+        hamburgerBtn.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            toggleMenu();
         });
 
-        // Close menu when clicking a link inside it
+        // click fallback for desktop / non-touch
+        hamburgerBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleMenu();
+        });
+
+        // Close when tapping a link inside the menu
         mobileMenu.addEventListener('click', function(e) {
-            var link = e.target.closest('a');
-            if (link) {
+            if (e.target.closest('a')) {
                 closeMobileMenu();
             }
         });
 
-        // Close menu on outside click
+        // iOS Safari doesn't fire 'click' on document for non-interactive elements,
+        // so use touchstart for outside-tap detection
+        document.addEventListener('touchstart', function(e) {
+            if (!hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                closeMobileMenu();
+            }
+        });
+
+        // Fallback outside-click for desktop
         document.addEventListener('click', function(e) {
             if (!hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
                 closeMobileMenu();

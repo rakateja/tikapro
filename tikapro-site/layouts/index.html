@@ -127,6 +127,8 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     right: 0;
     z-index: 1000;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 .navbar-container {
@@ -603,6 +605,8 @@ h1, h2, h3, h4, h5, h6 {
     background: none;
     border: none;
     padding: 4px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .hamburger span {
@@ -639,6 +643,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 1rem;
     flex-direction: column;
     gap: 0.5rem;
+    -webkit-overflow-scrolling: touch;
 }
 
 .mobile-menu.open {
