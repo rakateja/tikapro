@@ -598,6 +598,127 @@ h1, h2, h3, h4, h5, h6 {
 }
 
  
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+}
+
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--secondary-color);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+ 
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 999;
+    padding: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.mobile-menu.open {
+    display: flex;
+}
+
+.mobile-menu .nav-link {
+    padding: 0.6rem 0.5rem;
+    border-bottom: 1px solid #f3f4f6;
+    font-size: 1rem;
+}
+
+.mobile-menu .mobile-submenu {
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.mobile-menu .mobile-submenu a {
+    padding: 0.5rem 0.5rem;
+    color: #555;
+    text-decoration: none;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #f9fafb;
+}
+
+.mobile-menu .mobile-submenu a:hover {
+    color: var(--primary-color);
+}
+
+.mobile-menu .mobile-lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.5rem;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.mobile-menu .mobile-lang-label {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-right: 0.25rem;
+}
+
+.mobile-menu .lang-switcher {
+    display: flex;
+}
+
+.mobile-menu .mobile-actions {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.6rem 0.5rem;
+    margin-top: 0.25rem;
+}
+
+.mobile-menu .mobile-actions a {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.mobile-menu .mobile-actions .btn-login {
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+.mobile-menu .mobile-actions .btn-signup {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+ 
 @media (max-width: 768px) {
     body {
         padding-top: 60px;
@@ -630,13 +751,15 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .nav-links {
-        display: flex;
-        gap: 1rem;
+        display: none;
     }
 
-    .nav-links a {
-        margin-left: 0;
-        font-size: 0.9rem;
+    .navbar-right {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
     }
 
     .logo-img {
@@ -724,8 +847,41 @@ h1, h2, h3, h4, h5, h6 {
                 <a href="https://app.tikadata.com/login" class="nav-link" target="_blank" rel="noopener noreferrer">Login</a>
                 <a href="https://app.tikadata.com/register" class="nav-link" target="_blank" rel="noopener noreferrer">Sign Up</a>
             </div>
+            <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
+
+    
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-lang-switcher">
+            <span class="mobile-lang-label">Language:</span>
+            <div class="lang-switcher">
+                
+                <a href="http://localhost:1313/id/" class="lang-btn" lang="id"><span class="fi fi-id lang-flag"></span>Bahasa</a>
+                
+                <a href="http://localhost:1313/en/" class="lang-btn active" lang="en"><span class="fi fi-gb lang-flag"></span>English</a>
+                
+            </div>
+        </div>
+        <a href="#features" class="nav-link" onclick="closeMobileMenu()">Products</a>
+        <div class="mobile-submenu">
+            <a href="#feature-reports" onclick="closeMobileMenu()">Accounting Reports</a>
+            <a href="#feature-vendor" onclick="closeMobileMenu()">Vendor Bill Management</a>
+            <a href="#feature-expense" onclick="closeMobileMenu()">Expense Management</a>
+            <a href="#feature-sales" onclick="closeMobileMenu()">Daily Sales Recording</a>
+        </div>
+        <a href="https://blog.tikapro.id" class="nav-link">Blog</a>
+        <a href="#about-us" class="nav-link" onclick="closeMobileMenu()">About Us</a>
+        <a href="#contact-section" class="nav-link" onclick="closeMobileMenu()">Contact</a>
+        <div class="mobile-actions">
+            <a href="https://app.tikadata.com/login" class="btn-login" target="_blank" rel="noopener noreferrer">Login</a>
+            <a href="https://app.tikadata.com/register" class="btn-signup" target="_blank" rel="noopener noreferrer">Sign Up</a>
+        </div>
+    </div>
 
     
     <section class="hero">
