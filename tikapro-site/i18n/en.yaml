@@ -1,0 +1,95 @@
+# SEO
+page_title: "TikaPro - Automated Financial Reports, Bank Reconciliation & Invoicing"
+page_description: "TikaPro is a modern accounting platform with automated financial reports, bank reconciliation, and invoicing for forward-thinking businesses."
+page_keywords: "automated financial reports, automatic bank reconciliation, automated invoicing, accounting software, automated bookkeeping, financial reporting software, bank reconciliation software, ERP, TikaPro"
+og_title: "TikaPro - Automated Financial Reports, Bank Reconciliation & Invoicing"
+og_description: "Modern accounting platform: automated financial reports, bank reconciliation, and invoicing — all in one platform."
+twitter_title: "TikaPro - Automated Financial Reports, Bank Reconciliation & Invoicing"
+twitter_description: "Automated financial reports, bank reconciliation, automated invoicing. Modern accounting platform for forward-thinking businesses."
+
+# Navigation
+nav_products: "Products"
+nav_blog: "Blog"
+nav_about: "About Us"
+nav_contact: "Contact"
+nav_login: "Login"
+nav_signup: "Sign Up"
+nav_product_reports: "Accounting Reports"
+nav_product_vendor: "Vendor Bill Management"
+nav_product_expense: "Expense Management"
+nav_product_sales: "Daily Sales Recording"
+
+# Hero
+hero_title: "Next-Gen Accounting Systems<br>for Forward-Thinking Business"
+hero_description: "Spend less time on manual work and more time on your business. TikaPro handles <strong>Accounting Reports</strong>, <strong>Vendor Bills</strong>, <strong>Expense Management</strong>, <strong>Revenue Recognition</strong>, <strong>Inventory Management</strong>, and many more — all in one platform."
+hero_cta: "Request a Demo"
+
+# Features Overview
+features_title: "What We Offer"
+feature_reports_title: "Accounting Reports"
+feature_reports_desc: "Balance sheets, P&L, and trial balance reports generated in real time."
+feature_bills_title: "Bills & Expense Management"
+feature_bills_desc: "Manage vendor bills, capture expense receipts, and automate approvals in one place."
+feature_sales_title: "Daily Sales & Revenue Recognition"
+feature_sales_desc: "Record daily income, recognize revenue accurately, and generate trend reports."
+feature_inventory_title: "Inventory Management"
+feature_inventory_desc: "Track stock levels, manage products, and monitor inventory movement in real time."
+feature_more_title: "And Many More"
+feature_more_desc: "Procure-to-pay, cash advance, reimbursement, and ERP integrations like Xero."
+
+# Feature Detail: Accounting Reports
+reports_detail_title: "Accounting Reports"
+reports_detail_desc: "Access real-time balance sheets, profit & loss statements, and trial balance reports. Make confident decisions backed by accurate, up-to-date financial data — without waiting for month-end."
+reports_list_1: "Balance Sheet, P&L, and Trial Balance"
+reports_list_2: "Multi-period comparisons for trend analysis"
+reports_list_3: "Export to PDF, Excel, or sync to your ERP"
+reports_list_4: "Custom date ranges and department filtering"
+reports_img_alt: "Balance Sheet Report"
+
+# Feature Detail: Bills & Expense
+bills_detail_title: "Bills & Expense Management"
+bills_detail_desc: "Centralize vendor bills and employee expenses in one place. From bill entry to receipt capture, approval workflows to reimbursement — track the entire lifecycle with full audit trails."
+bills_list_1: "Centralized bill inbox with status tracking"
+bills_list_2: "Mobile receipt capture with OCR extraction"
+bills_list_3: "Multi-level approval workflows"
+bills_list_4: "Cash advance and reimbursement tracking"
+bills_list_5: "Vendor ledger and aging reports"
+bills_list_6: "Configurable spending policies per department"
+bills_img_vendor_alt: "Vendor Bill Management"
+bills_img_expense_alt: "Expense Receipt Management"
+
+# Feature Detail: Daily Sales
+sales_detail_title: "Daily Sales & Revenue Recognition"
+sales_detail_desc: "Record daily income across locations, categories, and payment methods. Recognize revenue accurately as it's earned — not just when cash is received — and reconcile effortlessly."
+sales_list_1: "Quick-entry forms for daily sales and income"
+sales_list_2: "Breakdown by category, location, or payment type"
+sales_list_3: "Revenue recognition aligned with delivery or service completion"
+sales_list_4: "Automatic journal entries to your ledger"
+sales_list_5: "Daily, weekly, and monthly trend reports"
+sales_img_alt: "Daily Sales Recording"
+
+# Benefits
+benefits_title: "Why Choose Us"
+benefit_efficiency_title: "Increased Efficiency"
+benefit_efficiency_desc: "Reduce manual work and streamline processes"
+benefit_cost_title: "Cost Savings"
+benefit_cost_desc: "Better spend visibility and control"
+benefit_compliance_title: "Compliance"
+benefit_compliance_desc: "Ensure policy compliance and audit trails"
+benefit_security_title: "Enterprise Security"
+benefit_security_desc: "Our software is built with enterprise security in mind"
+
+# About Us
+about_title: "About Us"
+about_p1: "The people behind Tika have over 10 years of experience building scalable and robust software products. Our team brings deep expertise from working at leading technology companies including <strong>Traveloka</strong>, <strong>GovTech Telkom</strong>, <strong>Amartha Financial</strong>, and <strong>Sorabel</strong>."
+about_p2: "This extensive background in enterprise software development and fintech solutions enables us to deliver accounting software that meets the demanding requirements of modern businesses."
+about_p3: "Our company and team are based in Bali, we can provide rapid response times and convenient support hours for businesses across the region."
+
+# Contact
+contact_title: "Contact Us"
+contact_sales_label: "Contact:"
+contact_sales_team: "Sales Team"
+contact_follow_us: "Follow Us:"
+
+# Footer
+footer_text: "© 2026 PT Tika Data Teknologi. Built with care in Bali. All rights reserved."

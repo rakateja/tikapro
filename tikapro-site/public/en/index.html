@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.Language.Lang }}">
+<html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
+	<meta name="generator" content="Hugo 0.147.9"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J79PPSRWJ2"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -11,39 +12,41 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ i18n "page_title" }}</title>
-    <meta name="description" content="{{ i18n "page_description" }}">
-    <meta name="keywords" content="{{ i18n "page_keywords" }}">
+    <title>TikaPro - Automated Financial Reports, Bank Reconciliation &amp; Invoicing</title>
+    <meta name="description" content="TikaPro is a modern accounting platform with automated financial reports, bank reconciliation, and invoicing for forward-thinking businesses.">
+    <meta name="keywords" content="automated financial reports, automatic bank reconciliation, automated invoicing, accounting software, automated bookkeeping, financial reporting software, bank reconciliation software, ERP, TikaPro">
     <meta name="author" content="PT Tika Data Teknologi">
-    <link rel="canonical" href="{{ .Permalink }}">
-    {{ range .AllTranslations }}
-    <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
-    {{ end }}
-    <link rel="alternate" hreflang="x-default" href="{{ .Site.BaseURL }}">
+    <link rel="canonical" href="http://localhost:1313/en/">
+    
+    <link rel="alternate" hreflang="id" href="http://localhost:1313/">
+    
+    <link rel="alternate" hreflang="en" href="http://localhost:1313/en/">
+    
+    <link rel="alternate" hreflang="x-default" href="http://localhost:1313/">
 
-    <!-- Favicon -->
+    
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
-    <!-- Open Graph -->
+    
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ .Permalink }}">
-    <meta property="og:title" content="{{ i18n "og_title" }}">
-    <meta property="og:description" content="{{ i18n "og_description" }}">
-    <meta property="og:image" content="{{ .Site.BaseURL }}logotikapro.png">
+    <meta property="og:url" content="http://localhost:1313/en/">
+    <meta property="og:title" content="TikaPro - Automated Financial Reports, Bank Reconciliation &amp; Invoicing">
+    <meta property="og:description" content="Modern accounting platform: automated financial reports, bank reconciliation, and invoicing — all in one platform.">
+    <meta property="og:image" content="http://localhost:1313/logotikapro.png">
     <meta property="og:site_name" content="TikaPro">
-    <meta property="og:locale" content="{{ .Site.Language.Lang }}_{{ upper .Site.Language.Lang }}">
+    <meta property="og:locale" content="en_EN">
 
-    <!-- Twitter Card -->
+    
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ i18n "twitter_title" }}">
-    <meta name="twitter:description" content="{{ i18n "twitter_description" }}">
-    <meta name="twitter:image" content="{{ .Site.BaseURL }}logotikapro.png">
+    <meta name="twitter:title" content="TikaPro - Automated Financial Reports, Bank Reconciliation &amp; Invoicing">
+    <meta name="twitter:description" content="Automated financial reports, bank reconciliation, automated invoicing. Modern accounting platform for forward-thinking businesses.">
+    <meta name="twitter:image" content="http://localhost:1313/logotikapro.png">
 
-    <!-- JSON-LD Structured Data -->
+    
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -52,7 +55,7 @@
         "url": "https://tikapro.id",
         "logo": "https://tikapro.id/logotikapro.png",
         "image": "https://tikapro.id/logotikapro.png",
-        "description": "{{ i18n "page_description" }}",
+        "description": "TikaPro is a modern accounting platform with automated financial reports, bank reconciliation, and invoicing for forward-thinking businesses.",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web",
         "offers": {
@@ -117,7 +120,7 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: -0.02em;
 }
 
-/* Navbar */
+ 
 .navbar {
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -184,7 +187,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary-color);
 }
 
-/* Dropdown */
+ 
 .dropdown {
     position: relative;
     display: inline-block;
@@ -242,7 +245,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary-color);
 }
 
-/* Language Switcher */
+ 
 .lang-switcher {
     display: flex;
     align-items: center;
@@ -276,7 +279,7 @@ h1, h2, h3, h4, h5, h6 {
     color: white;
 }
 
-/* Hero Section */
+ 
 .hero {
     padding: 2rem 2rem;
 }
@@ -324,7 +327,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: var(--primary-hover);
 }
 
-/* Features Section */
+ 
 .features {
     padding: 3rem 1rem;
     background: var(--light-bg);
@@ -375,7 +378,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #4B5563;
 }
 
-/* Feature Detail Sections */
+ 
 .feature-row {
     display: flex;
     align-items: center;
@@ -437,7 +440,7 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Image Slideshow */
+ 
 .image-slideshow {
     position: relative;
     max-width: 500px;
@@ -482,7 +485,7 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--primary-color);
 }
 
-/* Benefits Section */
+ 
 .benefits {
     background: #f8f9fa;
     padding: 2rem 1rem;
@@ -514,7 +517,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #4B5563;
 }
 
-/* About Us Section */
+ 
 .about-us {
     padding: 3rem 1rem;
     background: var(--light-bg);
@@ -552,7 +555,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
 }
 
-/* Contact Section */
+ 
 .quick-contact {
     padding: 2rem 1rem;
     text-align: center;
@@ -573,7 +576,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #007bff;
 }
 
-/* Footer */
+ 
 .footer {
     background: #333;
     color: #fff;
@@ -586,7 +589,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 auto;
 }
 
-/* Responsive */
+ 
 @media (max-width: 768px) {
     body {
         padding-top: 60px;
@@ -679,122 +682,124 @@ h1, h2, h3, h4, h5, h6 {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation -->
+    
     <nav class="navbar">
         <div class="navbar-container">
             <div class="navbar-left">
-                <a href="{{ .Site.BaseURL }}" class="navbar-logo">
+                <a href="http://localhost:1313/" class="navbar-logo">
                     <img src="/logotikapro.png" alt="TikaPro Logo" class="logo-img">
                 </a>
                 <div class="nav-links">
                     <div class="dropdown">
-                        <a href="#" class="nav-link dropdown-toggle">{{ i18n "nav_products" }} <i class="fas fa-chevron-down"></i></a>
+                        <a href="#" class="nav-link dropdown-toggle">Products <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="#feature-reports" class="dropdown-item">{{ i18n "nav_product_reports" }}</a>
-                            <a href="#feature-vendor" class="dropdown-item">{{ i18n "nav_product_vendor" }}</a>
-                            <a href="#feature-expense" class="dropdown-item">{{ i18n "nav_product_expense" }}</a>
-                            <a href="#feature-sales" class="dropdown-item">{{ i18n "nav_product_sales" }}</a>
+                            <a href="#feature-reports" class="dropdown-item">Accounting Reports</a>
+                            <a href="#feature-vendor" class="dropdown-item">Vendor Bill Management</a>
+                            <a href="#feature-expense" class="dropdown-item">Expense Management</a>
+                            <a href="#feature-sales" class="dropdown-item">Daily Sales Recording</a>
                         </div>
                     </div>
-                    <a href="https://blog.tikapro.id" class="nav-link">{{ i18n "nav_blog" }}</a>
-                    <a href="#about-us" class="nav-link">{{ i18n "nav_about" }}</a>
-                    <a href="#contact-section" class="nav-link">{{ i18n "nav_contact" }}</a>
+                    <a href="https://blog.tikapro.id" class="nav-link">Blog</a>
+                    <a href="#about-us" class="nav-link">About Us</a>
+                    <a href="#contact-section" class="nav-link">Contact</a>
                 </div>
             </div>
             <div class="navbar-right">
                 <div class="lang-switcher">
-                    {{ range .AllTranslations }}
-                    <a href="{{ .Permalink }}" class="lang-btn{{ if eq .Language.Lang $.Site.Language.Lang }} active{{ end }}" lang="{{ .Language.Lang }}">{{ .Language.LanguageName }}</a>
-                    {{ end }}
+                    
+                    <a href="http://localhost:1313/" class="lang-btn" lang="id">Bahasa</a>
+                    
+                    <a href="http://localhost:1313/en/" class="lang-btn active" lang="en">English</a>
+                    
                 </div>
-                <a href="https://app.tikadata.com/login" class="nav-link" target="_blank" rel="noopener noreferrer">{{ i18n "nav_login" }}</a>
-                <a href="https://app.tikadata.com/register" class="nav-link" target="_blank" rel="noopener noreferrer">{{ i18n "nav_signup" }}</a>
+                <a href="https://app.tikadata.com/login" class="nav-link" target="_blank" rel="noopener noreferrer">Login</a>
+                <a href="https://app.tikadata.com/register" class="nav-link" target="_blank" rel="noopener noreferrer">Sign Up</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
+    
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1>{{ i18n "hero_title" | safeHTML }}</h1>
-                <p>{{ i18n "hero_description" | safeHTML }}</p>
-                <a href="https://app.tikadata.com/register" class="cta-button">{{ i18n "hero_cta" }}</a>
+                <h1>Next-Gen Accounting Systems<br>for Forward-Thinking Business</h1>
+                <p>Spend less time on manual work and more time on your business. TikaPro handles <strong>Accounting Reports</strong>, <strong>Vendor Bills</strong>, <strong>Expense Management</strong>, <strong>Revenue Recognition</strong>, <strong>Inventory Management</strong>, and many more — all in one platform.</p>
+                <a href="https://app.tikadata.com/register" class="cta-button">Request a Demo</a>
             </div>
         </div>
     </section>
 
-    <!-- Features Overview -->
+    
     <section class="features" id="features">
-        <h2>{{ i18n "features_title" }}</h2>
+        <h2>What We Offer</h2>
         <div class="feature-grid">
             <a href="#feature-reports" class="feature-card">
                 <i class="fas fa-chart-bar"></i>
-                <h3>{{ i18n "feature_reports_title" }}</h3>
-                <p>{{ i18n "feature_reports_desc" }}</p>
+                <h3>Accounting Reports</h3>
+                <p>Balance sheets, P&amp;L, and trial balance reports generated in real time.</p>
             </a>
             <a href="#feature-bills-expense" class="feature-card">
                 <i class="fas fa-file-invoice-dollar"></i>
-                <h3>{{ i18n "feature_bills_title" }}</h3>
-                <p>{{ i18n "feature_bills_desc" }}</p>
+                <h3>Bills &amp; Expense Management</h3>
+                <p>Manage vendor bills, capture expense receipts, and automate approvals in one place.</p>
             </a>
             <a href="#feature-sales" class="feature-card">
                 <i class="fas fa-cash-register"></i>
-                <h3>{{ i18n "feature_sales_title" }}</h3>
-                <p>{{ i18n "feature_sales_desc" }}</p>
+                <h3>Daily Sales &amp; Revenue Recognition</h3>
+                <p>Record daily income, recognize revenue accurately, and generate trend reports.</p>
             </a>
             <div class="feature-card">
                 <i class="fas fa-boxes"></i>
-                <h3>{{ i18n "feature_inventory_title" }}</h3>
-                <p>{{ i18n "feature_inventory_desc" }}</p>
+                <h3>Inventory Management</h3>
+                <p>Track stock levels, manage products, and monitor inventory movement in real time.</p>
             </div>
             <div class="feature-card">
                 <i class="fas fa-ellipsis-h"></i>
-                <h3>{{ i18n "feature_more_title" }}</h3>
-                <p>{{ i18n "feature_more_desc" }}</p>
+                <h3>And Many More</h3>
+                <p>Procure-to-pay, cash advance, reimbursement, and ERP integrations like Xero.</p>
             </div>
         </div>
     </section>
 
-    <!-- Feature: Accounting Reports -->
+    
     <section id="feature-reports" style="background: #fff;">
         <div class="feature-row">
             <div class="feature-row-text">
-                <h2>{{ i18n "reports_detail_title" }}</h2>
-                <p>{{ i18n "reports_detail_desc" }}</p>
+                <h2>Accounting Reports</h2>
+                <p>Access real-time balance sheets, profit &amp; loss statements, and trial balance reports. Make confident decisions backed by accurate, up-to-date financial data — without waiting for month-end.</p>
                 <ul class="feature-list">
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "reports_list_1" }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "reports_list_2" }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "reports_list_3" }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "reports_list_4" }}</li>
+                    <li><i class="fas fa-check-circle"></i> Balance Sheet, P&amp;L, and Trial Balance</li>
+                    <li><i class="fas fa-check-circle"></i> Multi-period comparisons for trend analysis</li>
+                    <li><i class="fas fa-check-circle"></i> Export to PDF, Excel, or sync to your ERP</li>
+                    <li><i class="fas fa-check-circle"></i> Custom date ranges and department filtering</li>
                 </ul>
             </div>
             <div class="feature-row-image">
-                <img src="/images/balancesheet.png" alt="{{ i18n "reports_img_alt" }}">
+                <img src="/images/balancesheet.png" alt="Balance Sheet Report">
             </div>
         </div>
     </section>
 
-    <!-- Feature: Bills & Expense Management -->
+    
     <section id="feature-bills-expense" style="background: var(--light-bg);">
         <div class="feature-row reverse">
             <div class="feature-row-text">
-                <h2>{{ i18n "bills_detail_title" }}</h2>
-                <p>{{ i18n "bills_detail_desc" }}</p>
+                <h2>Bills &amp; Expense Management</h2>
+                <p>Centralize vendor bills and employee expenses in one place. From bill entry to receipt capture, approval workflows to reimbursement — track the entire lifecycle with full audit trails.</p>
                 <ul class="feature-list">
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "bills_list_1" }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "bills_list_2" }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "bills_list_3" }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "bills_list_4" }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "bills_list_5" }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "bills_list_6" }}</li>
+                    <li><i class="fas fa-check-circle"></i> Centralized bill inbox with status tracking</li>
+                    <li><i class="fas fa-check-circle"></i> Mobile receipt capture with OCR extraction</li>
+                    <li><i class="fas fa-check-circle"></i> Multi-level approval workflows</li>
+                    <li><i class="fas fa-check-circle"></i> Cash advance and reimbursement tracking</li>
+                    <li><i class="fas fa-check-circle"></i> Vendor ledger and aging reports</li>
+                    <li><i class="fas fa-check-circle"></i> Configurable spending policies per department</li>
                 </ul>
             </div>
             <div class="feature-row-image">
                 <div class="image-slideshow" id="bills-slideshow">
                     <div class="slide-wrapper">
-                        <img src="/images/vendorbill.png" alt="{{ i18n "bills_img_vendor_alt" }}" class="active">
-                        <img src="/images/expense.png" alt="{{ i18n "bills_img_expense_alt" }}">
+                        <img src="/images/vendorbill.png" alt="Vendor Bill Management" class="active">
+                        <img src="/images/expense.png" alt="Expense Receipt Management">
                     </div>
                     <div class="slide-dots">
                         <button class="slide-dot active" data-index="0"></button>
@@ -805,76 +810,76 @@ h1, h2, h3, h4, h5, h6 {
         </div>
     </section>
 
-    <!-- Feature: Daily Sales -->
+    
     <section id="feature-sales" style="background: var(--light-bg);">
         <div class="feature-row reverse">
             <div class="feature-row-text">
-                <h2>{{ i18n "sales_detail_title" }}</h2>
-                <p>{{ i18n "sales_detail_desc" }}</p>
+                <h2>Daily Sales &amp; Revenue Recognition</h2>
+                <p>Record daily income across locations, categories, and payment methods. Recognize revenue accurately as it&#39;s earned — not just when cash is received — and reconcile effortlessly.</p>
                 <ul class="feature-list">
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "sales_list_1" }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "sales_list_2" }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "sales_list_3" }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "sales_list_4" }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "sales_list_5" }}</li>
+                    <li><i class="fas fa-check-circle"></i> Quick-entry forms for daily sales and income</li>
+                    <li><i class="fas fa-check-circle"></i> Breakdown by category, location, or payment type</li>
+                    <li><i class="fas fa-check-circle"></i> Revenue recognition aligned with delivery or service completion</li>
+                    <li><i class="fas fa-check-circle"></i> Automatic journal entries to your ledger</li>
+                    <li><i class="fas fa-check-circle"></i> Daily, weekly, and monthly trend reports</li>
                 </ul>
             </div>
             <div class="feature-row-image">
-                <img src="/images/dailysales.png" alt="{{ i18n "sales_img_alt" }}">
+                <img src="/images/dailysales.png" alt="Daily Sales Recording">
             </div>
         </div>
     </section>
 
-    <!-- Why Choose Us -->
+    
     <section class="benefits">
-        <h2>{{ i18n "benefits_title" }}</h2>
+        <h2>Why Choose Us</h2>
         <div class="benefits-grid">
             <div class="benefit-item">
-                <h3>{{ i18n "benefit_efficiency_title" }}</h3>
-                <p>{{ i18n "benefit_efficiency_desc" }}</p>
+                <h3>Increased Efficiency</h3>
+                <p>Reduce manual work and streamline processes</p>
             </div>
             <div class="benefit-item">
-                <h3>{{ i18n "benefit_cost_title" }}</h3>
-                <p>{{ i18n "benefit_cost_desc" }}</p>
+                <h3>Cost Savings</h3>
+                <p>Better spend visibility and control</p>
             </div>
             <div class="benefit-item">
-                <h3>{{ i18n "benefit_compliance_title" }}</h3>
-                <p>{{ i18n "benefit_compliance_desc" }}</p>
+                <h3>Compliance</h3>
+                <p>Ensure policy compliance and audit trails</p>
             </div>
             <div class="benefit-item">
-                <h3>{{ i18n "benefit_security_title" }}</h3>
-                <p>{{ i18n "benefit_security_desc" }}</p>
+                <h3>Enterprise Security</h3>
+                <p>Our software is built with enterprise security in mind</p>
             </div>
         </div>
     </section>
 
-    <!-- About Us -->
+    
     <section class="about-us" id="about-us">
-        <h2>{{ i18n "about_title" }}</h2>
+        <h2>About Us</h2>
         <div class="about-container">
             <div class="about-content">
-                <p>{{ i18n "about_p1" | safeHTML }}</p>
-                <p>{{ i18n "about_p2" | safeHTML }}</p>
-                <p>{{ i18n "about_p3" | safeHTML }}</p>
+                <p>The people behind Tika have over 10 years of experience building scalable and robust software products. Our team brings deep expertise from working at leading technology companies including <strong>Traveloka</strong>, <strong>GovTech Telkom</strong>, <strong>Amartha Financial</strong>, and <strong>Sorabel</strong>.</p>
+                <p>This extensive background in enterprise software development and fintech solutions enables us to deliver accounting software that meets the demanding requirements of modern businesses.</p>
+                <p>Our company and team are based in Bali, we can provide rapid response times and convenient support hours for businesses across the region.</p>
             </div>
         </div>
     </section>
 
-    <!-- Contact -->
+    
     <section class="quick-contact" id="contact-section">
-        <h2>{{ i18n "contact_title" }}</h2>
+        <h2>Contact Us</h2>
         <div class="contact-info">
             <p class="company-name">PT Tika Data Teknologi</p>
             <p class="contact-detail">
                 <i class="fas fa-user"></i>
-                {{ i18n "contact_sales_label" }} {{ i18n "contact_sales_team" }}
+                Contact: Sales Team
             </p>
             <p class="contact-detail">
                 <i class="fas fa-envelope"></i>
                 <a href="mailto:sales@tikapro.id">sales@tikapro.id</a>
             </p>
             <p class="contact-detail follow-us">
-                {{ i18n "contact_follow_us" }}
+                Follow Us:
                 <a href="https://www.linkedin.com/company/tikapro" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 <a href="https://www.facebook.com/profile.php?id=61585182031316" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook"></i></a>
             </p>
@@ -883,7 +888,7 @@ h1, h2, h3, h4, h5, h6 {
 
     <footer class="footer">
         <div class="footer-container">
-            <p>{{ i18n "footer_text" }}</p>
+            <p>© 2026 PT Tika Data Teknologi. Built with care in Bali. All rights reserved.</p>
         </div>
     </footer>
     <script src="/js/script.js"></script>

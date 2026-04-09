@@ -1,0 +1,95 @@
+# SEO
+page_title: "TikaPro - Laporan Keuangan Otomatis, Rekonsiliasi Bank & Invoice Otomatis"
+page_description: "TikaPro adalah platform akuntansi modern dengan laporan keuangan otomatis, rekonsiliasi bank otomatis, dan invoice otomatis untuk bisnis yang visioner."
+page_keywords: "laporan keuangan otomatis, rekonsiliasi bank otomatis, invoice otomatis, software akuntansi, pembukuan otomatis, faktur otomatis, manajemen keuangan"
+og_title: "TikaPro - Laporan Keuangan Otomatis, Rekonsiliasi Bank & Invoice Otomatis"
+og_description: "Platform akuntansi modern: laporan keuangan otomatis, rekonsiliasi bank otomatis, dan invoice otomatis — semua dalam satu platform."
+twitter_title: "TikaPro - Laporan Keuangan Otomatis, Rekonsiliasi Bank & Invoice Otomatis"
+twitter_description: "Laporan keuangan otomatis, rekonsiliasi bank otomatis, invoice otomatis. Platform akuntansi modern untuk bisnis masa kini."
+
+# Navigation
+nav_products: "Produk"
+nav_blog: "Blog"
+nav_about: "Tentang Kami"
+nav_contact: "Kontak"
+nav_login: "Masuk"
+nav_signup: "Daftar"
+nav_product_reports: "Laporan Akuntansi"
+nav_product_vendor: "Manajemen Tagihan Vendor"
+nav_product_expense: "Manajemen Pengeluaran"
+nav_product_sales: "Pencatatan Penjualan Harian"
+
+# Hero
+hero_title: "Sistem Akuntansi Generasi Baru<br>untuk Bisnis yang Visioner"
+hero_description: "Habiskan lebih sedikit waktu untuk pekerjaan manual dan lebih banyak untuk bisnis Anda. TikaPro menangani <strong>Laporan Akuntansi</strong>, <strong>Tagihan Vendor</strong>, <strong>Manajemen Pengeluaran</strong>, <strong>Pengakuan Pendapatan</strong>, <strong>Manajemen Inventaris</strong>, dan masih banyak lagi — semua dalam satu platform."
+hero_cta: "Minta Demo"
+
+# Features Overview
+features_title: "Apa yang Kami Tawarkan"
+feature_reports_title: "Laporan Akuntansi"
+feature_reports_desc: "Neraca, laporan L/R, dan neraca saldo dibuat secara real-time."
+feature_bills_title: "Manajemen Tagihan & Pengeluaran"
+feature_bills_desc: "Kelola tagihan vendor, rekam bukti pengeluaran, dan otomatiskan persetujuan dalam satu tempat."
+feature_sales_title: "Penjualan Harian & Pengakuan Pendapatan"
+feature_sales_desc: "Catat pendapatan harian, akui pendapatan secara akurat, dan buat laporan tren."
+feature_inventory_title: "Manajemen Inventaris"
+feature_inventory_desc: "Pantau level stok, kelola produk, dan monitor pergerakan inventaris secara real-time."
+feature_more_title: "Dan Masih Banyak Lagi"
+feature_more_desc: "Procure-to-pay, uang muka, reimburse, dan integrasi ERP seperti Xero."
+
+# Feature Detail: Accounting Reports
+reports_detail_title: "Laporan Akuntansi"
+reports_detail_desc: "Akses neraca, laporan laba rugi, dan neraca saldo secara real-time. Ambil keputusan dengan percaya diri berdasarkan data keuangan yang akurat dan terkini — tanpa menunggu akhir bulan."
+reports_list_1: "Neraca, L/R, dan Neraca Saldo"
+reports_list_2: "Perbandingan multi-periode untuk analisis tren"
+reports_list_3: "Ekspor ke PDF, Excel, atau sinkronisasi ke ERP Anda"
+reports_list_4: "Rentang tanggal kustom dan filter per departemen"
+reports_img_alt: "Laporan Neraca"
+
+# Feature Detail: Bills & Expense
+bills_detail_title: "Manajemen Tagihan & Pengeluaran"
+bills_detail_desc: "Pusatkan tagihan vendor dan pengeluaran karyawan dalam satu tempat. Dari entri tagihan hingga rekam bukti, alur persetujuan hingga penggantian biaya — lacak seluruh siklus dengan jejak audit lengkap."
+bills_list_1: "Kotak masuk tagihan terpusat dengan pelacakan status"
+bills_list_2: "Rekam bukti di ponsel dengan ekstraksi OCR"
+bills_list_3: "Alur persetujuan multi-level"
+bills_list_4: "Pelacakan uang muka dan penggantian biaya"
+bills_list_5: "Laporan buku besar dan umur utang vendor"
+bills_list_6: "Kebijakan pengeluaran per departemen yang dapat dikonfigurasi"
+bills_img_vendor_alt: "Manajemen Tagihan Vendor"
+bills_img_expense_alt: "Manajemen Bukti Pengeluaran"
+
+# Feature Detail: Daily Sales
+sales_detail_title: "Penjualan Harian & Pengakuan Pendapatan"
+sales_detail_desc: "Catat pendapatan harian di berbagai lokasi, kategori, dan metode pembayaran. Akui pendapatan secara akurat saat diperoleh — bukan hanya saat kas diterima — dan lakukan rekonsiliasi dengan mudah."
+sales_list_1: "Formulir entri cepat untuk penjualan dan pendapatan harian"
+sales_list_2: "Rincian berdasarkan kategori, lokasi, atau jenis pembayaran"
+sales_list_3: "Pengakuan pendapatan sesuai pengiriman atau penyelesaian layanan"
+sales_list_4: "Entri jurnal otomatis ke buku besar Anda"
+sales_list_5: "Laporan tren harian, mingguan, dan bulanan"
+sales_img_alt: "Pencatatan Penjualan Harian"
+
+# Benefits
+benefits_title: "Mengapa Memilih Kami"
+benefit_efficiency_title: "Efisiensi Meningkat"
+benefit_efficiency_desc: "Kurangi pekerjaan manual dan sederhanakan proses"
+benefit_cost_title: "Penghematan Biaya"
+benefit_cost_desc: "Visibilitas dan kontrol pengeluaran yang lebih baik"
+benefit_compliance_title: "Kepatuhan"
+benefit_compliance_desc: "Pastikan kepatuhan kebijakan dan jejak audit"
+benefit_security_title: "Keamanan Enterprise"
+benefit_security_desc: "Perangkat lunak kami dibangun dengan standar keamanan enterprise"
+
+# About Us
+about_title: "Tentang Kami"
+about_p1: "Tim di balik Tika memiliki pengalaman lebih dari 10 tahun dalam membangun produk perangkat lunak yang skalabel dan andal. Tim kami membawa keahlian mendalam dari bekerja di perusahaan teknologi terkemuka termasuk <strong>Traveloka</strong>, <strong>GovTech Telkom</strong>, <strong>Amartha Financial</strong>, dan <strong>Sorabel</strong>."
+about_p2: "Latar belakang luas dalam pengembangan perangkat lunak enterprise dan solusi fintech memungkinkan kami menghadirkan software akuntansi yang memenuhi kebutuhan bisnis modern."
+about_p3: "Perusahaan dan tim kami berbasis di Bali, sehingga kami dapat memberikan waktu respons yang cepat dan jam dukungan yang nyaman bagi bisnis di seluruh kawasan."
+
+# Contact
+contact_title: "Hubungi Kami"
+contact_sales_label: "Kontak:"
+contact_sales_team: "Tim Penjualan"
+contact_follow_us: "Ikuti Kami:"
+
+# Footer
+footer_text: "© 2026 PT Tika Data Teknologi. Dibuat dengan penuh cinta di Bali. Semua hak dilindungi."

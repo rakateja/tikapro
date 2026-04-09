@@ -13,12 +13,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TikaPro - Laporan Keuangan Otomatis, Rekonsiliasi Bank &amp; Invoice Otomatis</title>
-    <meta name="description" content="TikaPro adalah platform akuntansi modern dengan laporan keuangan otomatis, rekonsiliasi bank otomatis, dan invoice otomatis. Automated financial reports, bank reconciliation, and invoicing for forward-thinking businesses.">
-    <meta name="keywords" content="laporan keuangan otomatis, rekonsiliasi bank otomatis, invoice otomatis, software akuntansi, pembukuan otomatis, faktur otomatis, manajemen keuangan, automated financial reports, automatic bank reconciliation, automated invoicing, invoice automation, accounting software, automated bookkeeping, financial reporting software, bank reconciliation software, ERP, TikaPro">
+    <meta name="description" content="TikaPro adalah platform akuntansi modern dengan laporan keuangan otomatis, rekonsiliasi bank otomatis, dan invoice otomatis untuk bisnis yang visioner.">
+    <meta name="keywords" content="laporan keuangan otomatis, rekonsiliasi bank otomatis, invoice otomatis, software akuntansi, pembukuan otomatis, faktur otomatis, manajemen keuangan">
     <meta name="author" content="PT Tika Data Teknologi">
     <link rel="canonical" href="http://localhost:1313/">
+    
     <link rel="alternate" hreflang="id" href="http://localhost:1313/">
-    <link rel="alternate" hreflang="en" href="http://localhost:1313/">
+    
+    <link rel="alternate" hreflang="en" href="http://localhost:1313/en/">
+    
     <link rel="alternate" hreflang="x-default" href="http://localhost:1313/">
 
     
@@ -32,16 +35,15 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="http://localhost:1313/">
     <meta property="og:title" content="TikaPro - Laporan Keuangan Otomatis, Rekonsiliasi Bank &amp; Invoice Otomatis">
-    <meta property="og:description" content="Platform akuntansi modern: laporan keuangan otomatis, rekonsiliasi bank otomatis, dan invoice otomatis. Automated financial reports, bank reconciliation, and invoicing — all in one platform.">
+    <meta property="og:description" content="Platform akuntansi modern: laporan keuangan otomatis, rekonsiliasi bank otomatis, dan invoice otomatis — semua dalam satu platform.">
     <meta property="og:image" content="http://localhost:1313/logotikapro.png">
     <meta property="og:site_name" content="TikaPro">
     <meta property="og:locale" content="id_ID">
-    <meta property="og:locale:alternate" content="en_US">
 
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="TikaPro - Laporan Keuangan Otomatis, Rekonsiliasi Bank &amp; Invoice Otomatis">
-    <meta name="twitter:description" content="Laporan keuangan otomatis, rekonsiliasi bank otomatis, invoice otomatis. Automated accounting platform for modern businesses.">
+    <meta name="twitter:description" content="Laporan keuangan otomatis, rekonsiliasi bank otomatis, invoice otomatis. Platform akuntansi modern untuk bisnis masa kini.">
     <meta name="twitter:image" content="http://localhost:1313/logotikapro.png">
 
     
@@ -53,7 +55,7 @@
         "url": "https://tikapro.id",
         "logo": "https://tikapro.id/logotikapro.png",
         "image": "https://tikapro.id/logotikapro.png",
-        "description": "Platform akuntansi modern dengan laporan keuangan otomatis, rekonsiliasi bank otomatis, dan invoice otomatis. Automated financial reports, bank reconciliation, and invoicing for forward-thinking businesses.",
+        "description": "TikaPro adalah platform akuntansi modern dengan laporan keuangan otomatis, rekonsiliasi bank otomatis, dan invoice otomatis untuk bisnis yang visioner.",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web",
         "offers": {
@@ -241,6 +243,40 @@ h1, h2, h3, h4, h5, h6 {
 .dropdown-item:hover {
     background-color: var(--light-bg);
     color: var(--primary-color);
+}
+
+ 
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.lang-btn {
+    padding: 0.25rem 0.6rem;
+    text-decoration: none;
+    color: #6b7280;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: background-color 0.2s, color 0.2s;
+    line-height: 1.6;
+}
+
+.lang-btn:not(:last-child) {
+    border-right: 1px solid #e5e7eb;
+}
+
+.lang-btn:hover {
+    background-color: var(--light-bg);
+    color: var(--secondary-color);
+}
+
+.lang-btn.active {
+    background-color: var(--primary-color);
+    color: white;
 }
 
  
@@ -650,27 +686,34 @@ h1, h2, h3, h4, h5, h6 {
     <nav class="navbar">
         <div class="navbar-container">
             <div class="navbar-left">
-                <a href="/" class="navbar-logo">
+                <a href="http://localhost:1313/" class="navbar-logo">
                     <img src="/logotikapro.png" alt="TikaPro Logo" class="logo-img">
                 </a>
                 <div class="nav-links">
                     <div class="dropdown">
-                    <a href="#" class="nav-link dropdown-toggle">Products <i class="fas fa-chevron-down"></i></a>
+                        <a href="#" class="nav-link dropdown-toggle">Produk <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="#feature-reports" class="dropdown-item">Accounting Reports</a>
-                            <a href="#feature-vendor" class="dropdown-item">Vendor Bill Management</a>
-                            <a href="#feature-expense" class="dropdown-item">Expense Management</a>
-                            <a href="#feature-sales" class="dropdown-item">Daily Sales Recording</a>
+                            <a href="#feature-reports" class="dropdown-item">Laporan Akuntansi</a>
+                            <a href="#feature-vendor" class="dropdown-item">Manajemen Tagihan Vendor</a>
+                            <a href="#feature-expense" class="dropdown-item">Manajemen Pengeluaran</a>
+                            <a href="#feature-sales" class="dropdown-item">Pencatatan Penjualan Harian</a>
                         </div>
                     </div>
                     <a href="https://blog.tikapro.id" class="nav-link">Blog</a>
-                    <a href="#about-us" class="nav-link">About Us</a>
-                    <a href="#contact-section" class="nav-link">Contact</a>
+                    <a href="#about-us" class="nav-link">Tentang Kami</a>
+                    <a href="#contact-section" class="nav-link">Kontak</a>
                 </div>
             </div>
             <div class="navbar-right">
-                <a href="https://app.tikadata.com/login" class="nav-link" target="_blank" rel="noopener noreferrer">Login</a>
-                <a href="https://app.tikadata.com/register" class="nav-link" target="_blank" rel="noopener noreferrer">Sign Up</a>
+                <div class="lang-switcher">
+                    
+                    <a href="http://localhost:1313/" class="lang-btn active" lang="id">Bahasa</a>
+                    
+                    <a href="http://localhost:1313/en/" class="lang-btn" lang="en">English</a>
+                    
+                </div>
+                <a href="https://app.tikadata.com/login" class="nav-link" target="_blank" rel="noopener noreferrer">Masuk</a>
+                <a href="https://app.tikadata.com/register" class="nav-link" target="_blank" rel="noopener noreferrer">Daftar</a>
             </div>
         </div>
     </nav>
@@ -679,41 +722,41 @@ h1, h2, h3, h4, h5, h6 {
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1>Next-Gen Accounting Systems<br>for Forward-Thinking Business</h1>
-                <p>Spend less time on manual work and more time on your business. TikaPro handles <strong>Accounting Reports</strong>, <strong>Vendor Bills</strong>, <strong>Expense Management</strong>, <strong>Revenue Recognition</strong>, <strong>Inventory Management</strong>, and many more — all in one platform.</p>
-                <a href="https://app.tikadata.com/register" class="cta-button">Request a Demo</a>
+                <h1>Sistem Akuntansi Generasi Baru<br>untuk Bisnis yang Visioner</h1>
+                <p>Habiskan lebih sedikit waktu untuk pekerjaan manual dan lebih banyak untuk bisnis Anda. TikaPro menangani <strong>Laporan Akuntansi</strong>, <strong>Tagihan Vendor</strong>, <strong>Manajemen Pengeluaran</strong>, <strong>Pengakuan Pendapatan</strong>, <strong>Manajemen Inventaris</strong>, dan masih banyak lagi — semua dalam satu platform.</p>
+                <a href="https://app.tikadata.com/register" class="cta-button">Minta Demo</a>
             </div>
         </div>
     </section>
 
     
     <section class="features" id="features">
-        <h2>What We Offer</h2>
+        <h2>Apa yang Kami Tawarkan</h2>
         <div class="feature-grid">
             <a href="#feature-reports" class="feature-card">
                 <i class="fas fa-chart-bar"></i>
-                <h3>Accounting Reports</h3>
-                <p>Balance sheets, P&amp;L, and trial balance reports generated in real time.</p>
+                <h3>Laporan Akuntansi</h3>
+                <p>Neraca, laporan L/R, dan neraca saldo dibuat secara real-time.</p>
             </a>
             <a href="#feature-bills-expense" class="feature-card">
                 <i class="fas fa-file-invoice-dollar"></i>
-                <h3>Bills &amp; Expense Management</h3>
-                <p>Manage vendor bills, capture expense receipts, and automate approvals in one place.</p>
+                <h3>Manajemen Tagihan &amp; Pengeluaran</h3>
+                <p>Kelola tagihan vendor, rekam bukti pengeluaran, dan otomatiskan persetujuan dalam satu tempat.</p>
             </a>
             <a href="#feature-sales" class="feature-card">
                 <i class="fas fa-cash-register"></i>
-                <h3>Daily Sales &amp; Revenue Recognition</h3>
-                <p>Record daily income, recognize revenue accurately, and generate trend reports.</p>
+                <h3>Penjualan Harian &amp; Pengakuan Pendapatan</h3>
+                <p>Catat pendapatan harian, akui pendapatan secara akurat, dan buat laporan tren.</p>
             </a>
             <div class="feature-card">
                 <i class="fas fa-boxes"></i>
-                <h3>Inventory Management</h3>
-                <p>Track stock levels, manage products, and monitor inventory movement in real time.</p>
+                <h3>Manajemen Inventaris</h3>
+                <p>Pantau level stok, kelola produk, dan monitor pergerakan inventaris secara real-time.</p>
             </div>
             <div class="feature-card">
                 <i class="fas fa-ellipsis-h"></i>
-                <h3>And Many More</h3>
-                <p>Procure-to-pay, cash advance, reimbursement, and ERP integrations like Xero.</p>
+                <h3>Dan Masih Banyak Lagi</h3>
+                <p>Procure-to-pay, uang muka, reimburse, dan integrasi ERP seperti Xero.</p>
             </div>
         </div>
     </section>
@@ -722,17 +765,17 @@ h1, h2, h3, h4, h5, h6 {
     <section id="feature-reports" style="background: #fff;">
         <div class="feature-row">
             <div class="feature-row-text">
-                <h2>Accounting Reports</h2>
-                <p>Access real-time balance sheets, profit &amp; loss statements, and trial balance reports. Make confident decisions backed by accurate, up-to-date financial data — without waiting for month-end.</p>
+                <h2>Laporan Akuntansi</h2>
+                <p>Akses neraca, laporan laba rugi, dan neraca saldo secara real-time. Ambil keputusan dengan percaya diri berdasarkan data keuangan yang akurat dan terkini — tanpa menunggu akhir bulan.</p>
                 <ul class="feature-list">
-                    <li><i class="fas fa-check-circle"></i> Balance Sheet, P&amp;L, and Trial Balance</li>
-                    <li><i class="fas fa-check-circle"></i> Multi-period comparisons for trend analysis</li>
-                    <li><i class="fas fa-check-circle"></i> Export to PDF, Excel, or sync to your ERP</li>
-                    <li><i class="fas fa-check-circle"></i> Custom date ranges and department filtering</li>
+                    <li><i class="fas fa-check-circle"></i> Neraca, L/R, dan Neraca Saldo</li>
+                    <li><i class="fas fa-check-circle"></i> Perbandingan multi-periode untuk analisis tren</li>
+                    <li><i class="fas fa-check-circle"></i> Ekspor ke PDF, Excel, atau sinkronisasi ke ERP Anda</li>
+                    <li><i class="fas fa-check-circle"></i> Rentang tanggal kustom dan filter per departemen</li>
                 </ul>
             </div>
             <div class="feature-row-image">
-                <img src="/images/balancesheet.png" alt="Balance Sheet Report">
+                <img src="/images/balancesheet.png" alt="Laporan Neraca">
             </div>
         </div>
     </section>
@@ -741,22 +784,22 @@ h1, h2, h3, h4, h5, h6 {
     <section id="feature-bills-expense" style="background: var(--light-bg);">
         <div class="feature-row reverse">
             <div class="feature-row-text">
-                <h2>Bills &amp; Expense Management</h2>
-                <p>Centralize vendor bills and employee expenses in one place. From bill entry to receipt capture, approval workflows to reimbursement — track the entire lifecycle with full audit trails.</p>
+                <h2>Manajemen Tagihan &amp; Pengeluaran</h2>
+                <p>Pusatkan tagihan vendor dan pengeluaran karyawan dalam satu tempat. Dari entri tagihan hingga rekam bukti, alur persetujuan hingga penggantian biaya — lacak seluruh siklus dengan jejak audit lengkap.</p>
                 <ul class="feature-list">
-                    <li><i class="fas fa-check-circle"></i> Centralized bill inbox with status tracking</li>
-                    <li><i class="fas fa-check-circle"></i> Mobile receipt capture with OCR extraction</li>
-                    <li><i class="fas fa-check-circle"></i> Multi-level approval workflows</li>
-                    <li><i class="fas fa-check-circle"></i> Cash advance and reimbursement tracking</li>
-                    <li><i class="fas fa-check-circle"></i> Vendor ledger and aging reports</li>
-                    <li><i class="fas fa-check-circle"></i> Configurable spending policies per department</li>
+                    <li><i class="fas fa-check-circle"></i> Kotak masuk tagihan terpusat dengan pelacakan status</li>
+                    <li><i class="fas fa-check-circle"></i> Rekam bukti di ponsel dengan ekstraksi OCR</li>
+                    <li><i class="fas fa-check-circle"></i> Alur persetujuan multi-level</li>
+                    <li><i class="fas fa-check-circle"></i> Pelacakan uang muka dan penggantian biaya</li>
+                    <li><i class="fas fa-check-circle"></i> Laporan buku besar dan umur utang vendor</li>
+                    <li><i class="fas fa-check-circle"></i> Kebijakan pengeluaran per departemen yang dapat dikonfigurasi</li>
                 </ul>
             </div>
             <div class="feature-row-image">
                 <div class="image-slideshow" id="bills-slideshow">
                     <div class="slide-wrapper">
-                        <img src="/images/vendorbill.png" alt="Vendor Bill Management" class="active">
-                        <img src="/images/expense.png" alt="Expense Receipt Management">
+                        <img src="/images/vendorbill.png" alt="Manajemen Tagihan Vendor" class="active">
+                        <img src="/images/expense.png" alt="Manajemen Bukti Pengeluaran">
                     </div>
                     <div class="slide-dots">
                         <button class="slide-dot active" data-index="0"></button>
@@ -771,72 +814,72 @@ h1, h2, h3, h4, h5, h6 {
     <section id="feature-sales" style="background: var(--light-bg);">
         <div class="feature-row reverse">
             <div class="feature-row-text">
-                <h2>Daily Sales &amp; Revenue Recognition</h2>
-                <p>Record daily income across locations, categories, and payment methods. Recognize revenue accurately as it's earned — not just when cash is received — and reconcile effortlessly.</p>
+                <h2>Penjualan Harian &amp; Pengakuan Pendapatan</h2>
+                <p>Catat pendapatan harian di berbagai lokasi, kategori, dan metode pembayaran. Akui pendapatan secara akurat saat diperoleh — bukan hanya saat kas diterima — dan lakukan rekonsiliasi dengan mudah.</p>
                 <ul class="feature-list">
-                    <li><i class="fas fa-check-circle"></i> Quick-entry forms for daily sales and income</li>
-                    <li><i class="fas fa-check-circle"></i> Breakdown by category, location, or payment type</li>
-                    <li><i class="fas fa-check-circle"></i> Revenue recognition aligned with delivery or service completion</li>
-                    <li><i class="fas fa-check-circle"></i> Automatic journal entries to your ledger</li>
-                    <li><i class="fas fa-check-circle"></i> Daily, weekly, and monthly trend reports</li>
+                    <li><i class="fas fa-check-circle"></i> Formulir entri cepat untuk penjualan dan pendapatan harian</li>
+                    <li><i class="fas fa-check-circle"></i> Rincian berdasarkan kategori, lokasi, atau jenis pembayaran</li>
+                    <li><i class="fas fa-check-circle"></i> Pengakuan pendapatan sesuai pengiriman atau penyelesaian layanan</li>
+                    <li><i class="fas fa-check-circle"></i> Entri jurnal otomatis ke buku besar Anda</li>
+                    <li><i class="fas fa-check-circle"></i> Laporan tren harian, mingguan, dan bulanan</li>
                 </ul>
             </div>
             <div class="feature-row-image">
-                <img src="/images/dailysales.png" alt="Daily Sales Recording">
+                <img src="/images/dailysales.png" alt="Pencatatan Penjualan Harian">
             </div>
         </div>
     </section>
 
     
     <section class="benefits">
-        <h2>Why Choose Us</h2>
+        <h2>Mengapa Memilih Kami</h2>
         <div class="benefits-grid">
             <div class="benefit-item">
-                <h3>Increased Efficiency</h3>
-                <p>Reduce manual work and streamline processes</p>
+                <h3>Efisiensi Meningkat</h3>
+                <p>Kurangi pekerjaan manual dan sederhanakan proses</p>
             </div>
             <div class="benefit-item">
-                <h3>Cost Savings</h3>
-                <p>Better spend visibility and control</p>
+                <h3>Penghematan Biaya</h3>
+                <p>Visibilitas dan kontrol pengeluaran yang lebih baik</p>
             </div>
             <div class="benefit-item">
-                <h3>Compliance</h3>
-                <p>Ensure policy compliance and audit trails</p>
+                <h3>Kepatuhan</h3>
+                <p>Pastikan kepatuhan kebijakan dan jejak audit</p>
             </div>
             <div class="benefit-item">
-                <h3>Enterprise Security</h3>
-                <p>Our software is built with enterprise security in mind</p>
+                <h3>Keamanan Enterprise</h3>
+                <p>Perangkat lunak kami dibangun dengan standar keamanan enterprise</p>
             </div>
         </div>
     </section>
 
     
     <section class="about-us" id="about-us">
-        <h2>About Us</h2>
+        <h2>Tentang Kami</h2>
         <div class="about-container">
             <div class="about-content">
-                <p>The people behind Tika have over 10 years of experience building scalable and robust software products. Our team brings deep expertise from working at leading technology companies including <strong>Traveloka</strong>, <strong>GovTech Telkom</strong>, <strong>Amartha Financial</strong>, and <strong>Sorabel</strong>.</p>
-                <p>This extensive background in enterprise software development and fintech solutions enables us to deliver accounting software that meets the demanding requirements of modern businesses.</p>
-                <p>Our company and team are based in Bali, we can provide rapid response times and convenient support hours for businesses across the region.</p>
+                <p>Tim di balik Tika memiliki pengalaman lebih dari 10 tahun dalam membangun produk perangkat lunak yang skalabel dan andal. Tim kami membawa keahlian mendalam dari bekerja di perusahaan teknologi terkemuka termasuk <strong>Traveloka</strong>, <strong>GovTech Telkom</strong>, <strong>Amartha Financial</strong>, dan <strong>Sorabel</strong>.</p>
+                <p>Latar belakang luas dalam pengembangan perangkat lunak enterprise dan solusi fintech memungkinkan kami menghadirkan software akuntansi yang memenuhi kebutuhan bisnis modern.</p>
+                <p>Perusahaan dan tim kami berbasis di Bali, sehingga kami dapat memberikan waktu respons yang cepat dan jam dukungan yang nyaman bagi bisnis di seluruh kawasan.</p>
             </div>
         </div>
     </section>
 
     
     <section class="quick-contact" id="contact-section">
-        <h2>Contact Us</h2>
+        <h2>Hubungi Kami</h2>
         <div class="contact-info">
             <p class="company-name">PT Tika Data Teknologi</p>
             <p class="contact-detail">
                 <i class="fas fa-user"></i>
-                Contact: Sales Team
+                Kontak: Tim Penjualan
             </p>
             <p class="contact-detail">
                 <i class="fas fa-envelope"></i>
                 <a href="mailto:sales@tikapro.id">sales@tikapro.id</a>
             </p>
             <p class="contact-detail follow-us">
-                Follow Us:
+                Ikuti Kami:
                 <a href="https://www.linkedin.com/company/tikapro" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 <a href="https://www.facebook.com/profile.php?id=61585182031316" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook"></i></a>
             </p>
@@ -845,7 +888,7 @@ h1, h2, h3, h4, h5, h6 {
 
     <footer class="footer">
         <div class="footer-container">
-            <p>&copy; 2026 PT Tika Data Teknologi. Built with care in Bali. All rights reserved.</p>
+            <p>© 2026 PT Tika Data Teknologi. Dibuat dengan penuh cinta di Bali. Semua hak dilindungi.</p>
         </div>
     </footer>
     <script src="/js/script.js"></script>
