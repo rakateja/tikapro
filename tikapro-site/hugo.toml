@@ -1,8 +1,8 @@
 baseURL = 'https://tikapro.id/'
 enableRobotsTXT = true
 disableKinds = ['taxonomy', 'term']
-defaultContentLanguage = 'id'
-defaultContentLanguageInSubdir = false
+defaultContentLanguage = 'en'
+defaultContentLanguageInSubdir = true
 
 [languages]
   [languages.id]
