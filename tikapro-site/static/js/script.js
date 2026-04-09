@@ -15,16 +15,23 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (hamburgerBtn && mobileMenu) {
-        // touchend for iOS Safari — e.preventDefault() stops the 300ms synthetic click
+        var tapped = false;
+
+        // touchend for iOS Safari — fires before the synthetic click
         hamburgerBtn.addEventListener('touchend', function(e) {
             e.preventDefault();
+            tapped = true;
             toggleMenu();
+            // reset flag after click would have fired
+            setTimeout(function() { tapped = false; }, 300);
         });
 
-        // click fallback for desktop / non-touch
+        // click for desktop and Chrome iOS (which fires click even after touchend)
         hamburgerBtn.addEventListener('click', function(e) {
             e.stopPropagation();
-            toggleMenu();
+            if (!tapped) {
+                toggleMenu();
+            }
         });
 
         // Close when tapping a link inside the menu
