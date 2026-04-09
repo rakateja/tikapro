@@ -266,6 +266,14 @@ h1, h2, h3, h4, h5, h6 {
     border-right: 1px solid #e5e7eb;
 }
 
+.lang-flag {
+    width: 1.2em;
+    line-height: 1;
+    margin-right: 0.35rem;
+    border-radius: 2px;
+    vertical-align: middle;
+}
+
 .lang-btn:hover {
     background-color: var(--light-bg);
     color: var(--secondary-color);
@@ -677,6 +685,7 @@ h1, h2, h3, h4, h5, h6 {
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -704,7 +713,7 @@ h1, h2, h3, h4, h5, h6 {
             <div class="navbar-right">
                 <div class="lang-switcher">
                     {{ range .AllTranslations }}
-                    <a href="{{ .Permalink }}" class="lang-btn{{ if eq .Language.Lang $.Site.Language.Lang }} active{{ end }}" lang="{{ .Language.Lang }}">{{ .Language.LanguageName }}</a>
+                    <a href="{{ .Permalink }}" class="lang-btn{{ if eq .Language.Lang $.Site.Language.Lang }} active{{ end }}" lang="{{ .Language.Lang }}"><span class="fi fi-{{ .Language.Params.flag }} lang-flag"></span>{{ .Language.LanguageName }}</a>
                     {{ end }}
                 </div>
                 <a href="https://app.tikadata.com/login" class="nav-link" target="_blank" rel="noopener noreferrer">{{ i18n "nav_login" }}</a>
