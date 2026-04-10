@@ -244,6 +244,17 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary-color);
 }
 
+.dropdown-divider {
+    height: 1px;
+    background-color: #e5e7eb;
+    margin: 0.25rem 0;
+}
+
+.dropdown-item-highlight {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
 /* Language Switcher */
 .lang-switcher {
     display: flex;
@@ -831,6 +842,8 @@ h1, h2, h3, h4, h5, h6 {
                             <a href="#feature-vendor" class="dropdown-item">{{ i18n "nav_product_vendor" }}</a>
                             <a href="#feature-expense" class="dropdown-item">{{ i18n "nav_product_expense" }}</a>
                             <a href="#feature-sales" class="dropdown-item">{{ i18n "nav_product_sales" }}</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="{{ "features/" | relLangURL }}" class="dropdown-item dropdown-item-highlight">{{ i18n "nav_product_all_features" }}</a>
                         </div>
                     </div>
                     <a href="https://blog.tikapro.id" class="nav-link">{{ i18n "nav_blog" }}</a>
@@ -871,6 +884,7 @@ h1, h2, h3, h4, h5, h6 {
             <a href="#feature-vendor">{{ i18n "nav_product_vendor" }}</a>
             <a href="#feature-expense">{{ i18n "nav_product_expense" }}</a>
             <a href="#feature-sales">{{ i18n "nav_product_sales" }}</a>
+            <a href="{{ "features/" | relLangURL }}" style="font-weight: 600; color: var(--primary-color);">{{ i18n "nav_product_all_features" }}</a>
         </div>
         <a href="https://blog.tikapro.id" class="nav-link">{{ i18n "nav_blog" }}</a>
         <a href="#about-us" class="nav-link">{{ i18n "nav_about" }}</a>

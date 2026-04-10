@@ -18,6 +18,7 @@ nav_product_reports: "Accounting Reports"
 nav_product_vendor: "Vendor Bill Management"
 nav_product_expense: "Expense Management"
 nav_product_sales: "Daily Sales Recording"
+nav_product_all_features: "All Features"
 
 # Hero
 hero_title: "Next-Gen Accounting Systems<br>for Forward-Thinking Business"
@@ -90,6 +91,38 @@ contact_title: "Contact Us"
 contact_sales_label: "Contact:"
 contact_sales_team: "Sales Team"
 contact_follow_us: "Follow Us:"
+
+# All Features Page
+allfeatures_title: "All Features"
+allfeatures_subtitle: "Everything you need to run your financial operations — in one platform."
+
+allfeatures_invoicing_title: "Invoicing, Daily Sales & Revenue Recognition"
+allfeatures_invoicing_desc: "Create professional invoices, record daily sales across locations, and recognize revenue accurately — all connected to your general ledger."
+
+allfeatures_vendor_title: "Vendor Bill & Expense Management"
+allfeatures_vendor_desc: "Centralize vendor bills and employee expenses with approval workflows, receipt capture, and full audit trails."
+
+allfeatures_accounting_title: "Accounting & Taxes Reporting"
+allfeatures_accounting_desc: "Generate balance sheets, profit & loss, trial balance, and tax reports in real time with multi-period comparisons."
+
+allfeatures_bank_title: "Bank Reconciliation"
+allfeatures_bank_desc: "Automatically match bank transactions with your book entries for fast, accurate reconciliation."
+
+allfeatures_project_title: "Financial Project Tracking"
+allfeatures_project_desc: "Track revenue, costs, and profitability per project or cost center with real-time financial visibility."
+
+allfeatures_purchase_title: "Purchase Request & Purchase Order"
+allfeatures_purchase_desc: "Streamline procurement with digital purchase requests, approvals, and automated purchase order generation."
+
+allfeatures_inventory_title: "Inventory"
+allfeatures_inventory_desc: "Monitor stock levels, manage products, and track inventory movement across warehouses in real time."
+
+allfeatures_api_title: "Open API & Seamless Integration"
+allfeatures_api_desc: "Connect TikaPro with your existing tools through our REST API and pre-built integrations with popular platforms."
+
+allfeatures_cta_title: "Ready to Get Started?"
+allfeatures_cta_desc: "Join forward-thinking businesses that trust TikaPro for their financial operations."
+allfeatures_cta_button: "Request a Demo"
 
 # Footer
 footer_text: "© 2026 PT Tika Data Teknologi. Built with care in Bali. All rights reserved."

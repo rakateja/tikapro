@@ -18,6 +18,7 @@ nav_product_reports: "Laporan Akuntansi"
 nav_product_vendor: "Manajemen Tagihan Vendor"
 nav_product_expense: "Manajemen Pengeluaran"
 nav_product_sales: "Pencatatan Penjualan Harian"
+nav_product_all_features: "Semua Fitur"
 
 # Hero
 hero_title: "Sistem Akuntansi Generasi Baru<br>untuk Bisnis yang Visioner"
@@ -90,6 +91,38 @@ contact_title: "Hubungi Kami"
 contact_sales_label: "Kontak:"
 contact_sales_team: "Tim Penjualan"
 contact_follow_us: "Ikuti Kami:"
+
+# All Features Page
+allfeatures_title: "Semua Fitur"
+allfeatures_subtitle: "Semua yang Anda butuhkan untuk menjalankan operasi keuangan — dalam satu platform."
+
+allfeatures_invoicing_title: "Invoice, Penjualan Harian & Pengakuan Pendapatan"
+allfeatures_invoicing_desc: "Buat invoice profesional, catat penjualan harian di berbagai lokasi, dan akui pendapatan secara akurat — semuanya terhubung ke buku besar Anda."
+
+allfeatures_vendor_title: "Manajemen Tagihan Vendor & Pengeluaran"
+allfeatures_vendor_desc: "Pusatkan tagihan vendor dan pengeluaran karyawan dengan alur persetujuan, rekam bukti, dan jejak audit lengkap."
+
+allfeatures_accounting_title: "Laporan Akuntansi & Pajak"
+allfeatures_accounting_desc: "Buat neraca, laporan laba rugi, neraca saldo, dan laporan pajak secara real-time dengan perbandingan multi-periode."
+
+allfeatures_bank_title: "Rekonsiliasi Bank"
+allfeatures_bank_desc: "Cocokkan transaksi bank dengan catatan buku Anda secara otomatis untuk rekonsiliasi yang cepat dan akurat."
+
+allfeatures_project_title: "Pelacakan Proyek Keuangan"
+allfeatures_project_desc: "Lacak pendapatan, biaya, dan profitabilitas per proyek atau pusat biaya dengan visibilitas keuangan real-time."
+
+allfeatures_purchase_title: "Permintaan Pembelian & Purchase Order"
+allfeatures_purchase_desc: "Sederhanakan pengadaan dengan permintaan pembelian digital, persetujuan, dan pembuatan purchase order otomatis."
+
+allfeatures_inventory_title: "Inventaris"
+allfeatures_inventory_desc: "Pantau level stok, kelola produk, dan lacak pergerakan inventaris di seluruh gudang secara real-time."
+
+allfeatures_api_title: "Open API & Integrasi Mulus"
+allfeatures_api_desc: "Hubungkan TikaPro dengan tools yang sudah ada melalui REST API dan integrasi bawaan dengan platform populer."
+
+allfeatures_cta_title: "Siap untuk Memulai?"
+allfeatures_cta_desc: "Bergabunglah dengan bisnis visioner yang mempercayakan operasi keuangan mereka kepada TikaPro."
+allfeatures_cta_button: "Minta Demo"
 
 # Footer
 footer_text: "© 2026 PT Tika Data Teknologi. Dibuat dengan penuh cinta di Bali. Semua hak dilindungi."
