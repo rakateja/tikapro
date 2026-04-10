@@ -13,12 +13,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ .Title }}</title>
     <meta name="description" content="{{ .Description }}">
+    <meta name="keywords" content="{{ i18n "allfeatures_keywords" }}">
     <meta name="author" content="PT Tika Data Teknologi">
     <link rel="canonical" href="{{ .Permalink }}">
     {{ range .AllTranslations }}
     <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
     {{ end }}
-    <link rel="alternate" hreflang="x-default" href="{{ .Site.BaseURL }}">
+    {{ range .AllTranslations }}{{ if eq .Language.Lang "en" }}
+    <link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+    {{ end }}{{ end }}
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -34,12 +37,84 @@
     <meta property="og:description" content="{{ .Description }}">
     <meta property="og:image" content="{{ .Site.BaseURL }}logotikapro.png">
     <meta property="og:site_name" content="TikaPro">
+    <meta property="og:locale" content="{{ .Site.Language.Lang }}_{{ upper .Site.Language.Lang }}">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ .Title }}">
     <meta name="twitter:description" content="{{ .Description }}">
     <meta name="twitter:image" content="{{ .Site.BaseURL }}logotikapro.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebPage",
+                "@id": "{{ .Permalink }}",
+                "url": "{{ .Permalink }}",
+                "name": "{{ .Title }}",
+                "description": "{{ .Description }}",
+                "inLanguage": "{{ .Site.Language.Lang }}",
+                "isPartOf": {
+                    "@type": "WebSite",
+                    "name": "TikaPro",
+                    "url": "https://tikapro.id"
+                },
+                "about": {
+                    "@type": "SoftwareApplication",
+                    "name": "TikaPro",
+                    "applicationCategory": "BusinessApplication",
+                    "operatingSystem": "Web",
+                    "url": "https://tikapro.id",
+                    "featureList": [
+                        "{{ i18n "allfeatures_invoicing_title" }}",
+                        "{{ i18n "allfeatures_vendor_title" }}",
+                        "{{ i18n "allfeatures_accounting_title" }}",
+                        "{{ i18n "allfeatures_bank_title" }}",
+                        "{{ i18n "allfeatures_project_title" }}",
+                        "{{ i18n "allfeatures_purchase_title" }}",
+                        "{{ i18n "allfeatures_inventory_title" }}",
+                        "{{ i18n "allfeatures_api_title" }}"
+                    ],
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "USD",
+                        "availability": "https://schema.org/InStock"
+                    },
+                    "publisher": {
+                        "@type": "Organization",
+                        "name": "PT Tika Data Teknologi",
+                        "url": "https://tikapro.id",
+                        "logo": {
+                            "@type": "ImageObject",
+                            "url": "https://tikapro.id/logotikapro.png"
+                        }
+                    }
+                }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "{{ i18n "allfeatures_breadcrumb_home" }}",
+                        "item": "{{ .Site.Home.Permalink }}"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "{{ i18n "allfeatures_title" }}",
+                        "item": "{{ .Permalink }}"
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
 
     <style>
 * {

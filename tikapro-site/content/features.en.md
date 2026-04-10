@@ -1,4 +1,4 @@
 ---
-title: "All Features - TikaPro"
-description: "Explore all TikaPro features: invoicing, expense management, accounting reports, bank reconciliation, project tracking, procurement, inventory, and API integrations."
+title: "All Features - TikaPro Accounting Platform"
+description: "Explore TikaPro features: invoicing, accounting reports, bank reconciliation, expense management, inventory, purchase orders, and API integrations."
 ---

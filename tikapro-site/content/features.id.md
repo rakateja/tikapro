@@ -1,4 +1,4 @@
 ---
-title: "Semua Fitur - TikaPro"
-description: "Jelajahi semua fitur TikaPro: invoice, manajemen pengeluaran, laporan akuntansi, rekonsiliasi bank, pelacakan proyek, pengadaan, inventaris, dan integrasi API."
+title: "Semua Fitur - TikaPro Platform Akuntansi"
+description: "Jelajahi fitur lengkap TikaPro: invoice, laporan akuntansi, rekonsiliasi bank, manajemen pengeluaran, inventaris, purchase order, dan integrasi API."
 ---

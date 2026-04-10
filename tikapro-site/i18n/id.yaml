@@ -91,6 +91,10 @@ contact_sales_label: "Kontak:"
 contact_sales_team: "Tim Penjualan"
 contact_follow_us: "Ikuti Kami:"
 
+# All Features Page - SEO
+allfeatures_keywords: "fitur software akuntansi, software invoice, rekonsiliasi bank, manajemen pengeluaran, laporan akuntansi, software purchase order, manajemen inventaris, pelacakan proyek keuangan, integrasi API, TikaPro"
+allfeatures_breadcrumb_home: "Beranda"
+
 # All Features Page
 allfeatures_title: "Semua Fitur"
 allfeatures_subtitle: "Semua yang Anda butuhkan untuk menjalankan operasi keuangan — dalam satu platform."

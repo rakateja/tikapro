@@ -91,6 +91,10 @@ contact_sales_label: "Contact:"
 contact_sales_team: "Sales Team"
 contact_follow_us: "Follow Us:"
 
+# All Features Page - SEO
+allfeatures_keywords: "accounting software features, invoicing software, bank reconciliation, expense management, accounting reports, purchase order software, inventory management, financial project tracking, open API integration, TikaPro"
+allfeatures_breadcrumb_home: "Home"
+
 # All Features Page
 allfeatures_title: "All Features"
 allfeatures_subtitle: "Everything you need to run your financial operations — in one platform."
