@@ -91,6 +91,11 @@ contact_sales_label: "Kontak:"
 contact_sales_team: "Tim Penjualan"
 contact_follow_us: "Ikuti Kami:"
 
+# Footer Products
+footer_products_title: "Produk Kami"
+footer_product_tikapro_desc: "Software Akuntansi Online"
+footer_product_tikapos_desc: "POS Multi-Outlet Offline-First"
+
 # All Features Page - SEO
 allfeatures_keywords: "fitur software akuntansi, software invoice, rekonsiliasi bank, manajemen pengeluaran, laporan akuntansi, software purchase order, manajemen inventaris, pelacakan proyek keuangan, integrasi API, TikaPro"
 allfeatures_breadcrumb_home: "Beranda"
