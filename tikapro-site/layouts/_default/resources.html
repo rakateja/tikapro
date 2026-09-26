@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.Language.Lang }}">
 {{ $firms := sort (index site.Data .Params.directory) "name" }}
+{{ $ogLocale := cond (eq .Site.Language.Lang "id") "id_ID" "en_US" }}
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J79PPSRWJ2"></script>
@@ -33,12 +34,16 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
+    <meta property="og:image:alt" content="TikaPro">
     <meta property="og:url" content="{{ .Permalink }}">
     <meta property="og:title" content="{{ .Title }}">
     <meta property="og:description" content="{{ .Description }}">
     <meta property="og:image" content="{{ .Site.BaseURL }}logotikapro.png">
     <meta property="og:site_name" content="TikaPro">
-    <meta property="og:locale" content="{{ .Site.Language.Lang }}_{{ upper .Site.Language.Lang }}">
+    <meta property="og:locale" content="{{ $ogLocale }}">
+    {{ range .Translations }}
+    <meta property="og:locale:alternate" content="{{ cond (eq .Language.Lang "id") "id_ID" "en_US" }}">
+    {{ end }}
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
@@ -52,17 +57,20 @@
         "@context": "https://schema.org",
         "@graph": [
             {
-                "@type": "WebPage",
+                "@type": "CollectionPage",
                 "@id": "{{ .Permalink }}",
                 "url": "{{ .Permalink }}",
                 "name": "{{ .Title }}",
                 "description": "{{ .Description }}",
                 "inLanguage": "{{ .Site.Language.Lang }}",
+                "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
                 "isPartOf": {
                     "@type": "WebSite",
                     "name": "TikaPro",
                     "url": "https://tikapro.id"
                 },
+                "publisher": { "@id": "https://tikapro.id/#organization" },
+                "breadcrumb": { "@id": "{{ .Permalink }}#breadcrumb" },
                 "mainEntity": {
                     "@type": "ItemList",
                     "numberOfItems": {{ len $firms }},
@@ -90,7 +98,35 @@
                 }
             },
             {
+                "@type": "Organization",
+                "@id": "https://tikapro.id/#organization",
+                "name": "TikaPro",
+                "legalName": "PT Tika Data Teknologi",
+                "url": "https://tikapro.id",
+                "logo": "https://tikapro.id/logotikapro.png",
+                "email": "sales@tikapro.id",
+                "sameAs": [
+                    "https://www.linkedin.com/company/tikapro",
+                    "https://www.facebook.com/profile.php?id=61585182031316",
+                    "https://www.instagram.com/tikaprohq"
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "@id": "{{ .Permalink }}#faq",
+                "mainEntity": [
+                    {{- range $i, $f := .Params.faqs }}{{ if $i }},{{ end }}
+                    {
+                        "@type": "Question",
+                        "name": {{ $f.q }},
+                        "acceptedAnswer": { "@type": "Answer", "text": {{ $f.a }} }
+                    }
+                    {{- end }}
+                ]
+            },
+            {
                 "@type": "BreadcrumbList",
+                "@id": "{{ .Permalink }}#breadcrumb",
                 "itemListElement": [
                     {
                         "@type": "ListItem",
@@ -101,7 +137,7 @@
                     {
                         "@type": "ListItem",
                         "position": 2,
-                        "name": "{{ i18n "resources_breadcrumb" }}",
+                        "name": {{ .Params.heading }},
                         "item": "{{ .Permalink }}"
                     }
                 ]
@@ -360,6 +396,107 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 auto;
     color: #6b7280;
     line-height: 1.7;
+}
+
+/* Resources Sections */
+.resources-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+}
+
+.resources-section h2,
+.resources-directory h2 {
+    font-size: 1.35rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.resources-intro p {
+    color: #4b5563;
+    line-height: 1.7;
+}
+
+.resources-intro .resources-updated {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.resources-tips {
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    color: #4b5563;
+}
+
+.resources-tikapro {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.resources-tikapro p {
+    color: #4b5563;
+    margin-bottom: 1rem;
+}
+
+.resources-features {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.resources-features i {
+    color: var(--primary-color);
+    width: 1.25rem;
+    margin-right: 0.35rem;
+}
+
+.resources-more-link,
+.resources-related a {
+    color: var(--primary-color);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.resources-more-link i,
+.resources-related i {
+    font-size: 0.75rem;
+    margin-left: 0.25rem;
+}
+
+.resources-more-link:hover,
+.resources-related a:hover {
+    color: var(--primary-hover);
+}
+
+.resources-faq details {
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0.9rem 0;
+}
+
+.resources-faq summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.resources-faq details p {
+    margin-top: 0.6rem;
+    color: #4b5563;
+    line-height: 1.7;
+}
+
+.resources-related {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 /* Resources Directory */
@@ -679,8 +816,13 @@ h1, h2, h3, h4, h5, h6 {
         flex-direction: column;
     }
 
-    .resources-list {
+    .resources-list,
+    .resources-features {
         grid-template-columns: 1fr;
+    }
+
+    .resources-section {
+        padding: 1.25rem 1rem;
     }
 
     .features-cta {
@@ -838,8 +980,15 @@ h1, h2, h3, h4, h5, h6 {
         <p>{{ .Params.subtitle }}</p>
     </section>
 
+    <!-- Intro -->
+    <section class="resources-section resources-intro">
+        <p>{{ .Params.intro }}</p>
+        <p class="resources-updated">{{ i18n "resources_updated" }}: <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod | time.Format ":date_long" }}</time></p>
+    </section>
+
     <!-- Firm Directory -->
-    <section class="resources-directory">
+    <section class="resources-directory" aria-labelledby="directory-title">
+        <h2 id="directory-title">{{ i18n "resources_directory_title" (dict "Count" (len $firms) "Place" .Params.place) }}</h2>
         <div class="resources-toolbar">
             <input type="search" id="firm-search" class="resources-search" placeholder="{{ i18n "resources_search_placeholder" }}" aria-label="{{ i18n "resources_search_placeholder" }}">
             <select id="firm-area" class="resources-area" aria-label="{{ i18n "resources_filter_all" }}">
@@ -872,6 +1021,56 @@ h1, h2, h3, h4, h5, h6 {
         <p class="resources-empty" id="firm-empty" hidden>{{ i18n "resources_empty" }}</p>
         <p class="resources-disclaimer">{{ i18n "resources_disclaimer" }}</p>
     </section>
+
+    <!-- How to choose -->
+    <section class="resources-section">
+        <h2>{{ i18n "resources_choose_title" (dict "Place" .Params.place) }}</h2>
+        <ul class="resources-tips">
+            <li>{{ i18n "resources_choose_1" | safeHTML }}</li>
+            <li>{{ i18n "resources_choose_2" | safeHTML }}</li>
+            <li>{{ i18n "resources_choose_3" | safeHTML }}</li>
+            <li>{{ i18n "resources_choose_4" | safeHTML }}</li>
+        </ul>
+    </section>
+
+    <!-- TikaPro -->
+    <section class="resources-section resources-tikapro">
+        <h2>{{ i18n "resources_tikapro_title" }}</h2>
+        <p>{{ i18n "resources_tikapro_desc" (dict "Place" .Params.place) }}</p>
+        <ul class="resources-features">
+            <li><i class="fas fa-file-invoice"></i> {{ i18n "allfeatures_invoicing_title" }}</li>
+            <li><i class="fas fa-file-invoice-dollar"></i> {{ i18n "allfeatures_vendor_title" }}</li>
+            <li><i class="fas fa-university"></i> {{ i18n "allfeatures_bank_title" }}</li>
+            <li><i class="fas fa-chart-bar"></i> {{ i18n "allfeatures_accounting_title" }}</li>
+        </ul>
+        <a href="{{ "features/" | relLangURL }}" class="resources-more-link">{{ i18n "resources_tikapro_link" }} <i class="fas fa-arrow-right"></i></a>
+    </section>
+
+    <!-- FAQ -->
+    <section class="resources-section" aria-labelledby="faq-title">
+        <h2 id="faq-title">{{ i18n "resources_faq_title" }}</h2>
+        <div class="resources-faq">
+            {{ range .Params.faqs }}
+            <details>
+                <summary>{{ .q }}</summary>
+                <p>{{ .a }}</p>
+            </details>
+            {{ end }}
+        </div>
+    </section>
+
+    <!-- Related directories -->
+    {{ $related := where (where site.RegularPages "Layout" "resources") "Permalink" "ne" .Permalink }}
+    {{ with $related }}
+    <section class="resources-section">
+        <h2>{{ i18n "resources_related_title" }}</h2>
+        <ul class="resources-related">
+            {{ range . }}
+            <li><a href="{{ .RelPermalink }}">{{ .Params.heading }} <i class="fas fa-arrow-right"></i></a></li>
+            {{ end }}
+        </ul>
+    </section>
+    {{ end }}
 
     <!-- CTA -->
     <section class="features-cta">
