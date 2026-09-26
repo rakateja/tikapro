@@ -96,6 +96,13 @@ footer_products_title: "Our Products"
 footer_product_tikapro_desc: "Online Accounting Software"
 footer_product_tikapos_desc: "Offline-First Multi-Outlet POS"
 
+# Footer Resources
+footer_resources_title: "Resources"
+footer_resource_bali_firms: "Bali Accounting & Tax Services"
+footer_resource_bali_firms_desc: "Directory of accounting and tax firms in Bali"
+footer_resource_lombok_firms: "Mataram & Lombok Accounting & Tax Services"
+footer_resource_lombok_firms_desc: "Directory of accounting and tax firms in Mataram and Lombok"
+
 # All Features Page - SEO
 allfeatures_keywords: "accounting software features, invoicing software, bank reconciliation, expense management, accounting reports, purchase order software, inventory management, financial project tracking, open API integration, TikaPro"
 allfeatures_breadcrumb_home: "Home"
@@ -131,6 +138,22 @@ allfeatures_api_desc: "Connect TikaPro with your existing tools through our REST
 allfeatures_cta_title: "Ready to Get Started?"
 allfeatures_cta_desc: "Join forward-thinking businesses that trust TikaPro for their financial operations."
 allfeatures_cta_button: "Request a Demo"
+
+# Resources Page
+resources_breadcrumb: "Resources"
+resources_filter_all: "All areas"
+resources_search_placeholder: "Search by name or service"
+resources_website: "Visit website"
+resources_empty: "No firms match your search."
+resources_disclaimer: "This list is provided for information only. TikaPro is not affiliated with these firms and does not endorse them. Details may change — please verify directly with each firm. Want your firm listed or updated? Contact us at sales@tikapro.id."
+resources_cta_title: "Working with an accountant?"
+resources_cta_desc: "TikaPro gives you and your accountant one shared place for your books, bills, and reports."
+resources_cta_button: "Request a Demo"
+resources_service_accounting: "Accounting & Bookkeeping"
+resources_service_tax: "Tax Consulting"
+resources_service_audit: "Audit"
+resources_service_payroll: "Payroll"
+resources_service_setup: "Company Setup & Licensing"
 
 # Footer
 footer_text: "© 2026 PT Tika Data Teknologi. Built with care in Bali. All rights reserved."

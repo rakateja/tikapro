@@ -1,0 +1,107 @@
+# Accounting & tax service firms in Bali, listed on /resources/.
+# Only add firms verified from their own site or an official directory.
+# services keys map to i18n resources_service_*: accounting, tax, audit, payroll, setup
+- name: "Adyasta Consulting"
+  areas: [Denpasar, Seminyak]
+  services: [accounting, tax, setup]
+  website: "https://consulting.adyasta.com/en/"
+- name: "Bali Accountants"
+  areas: [Denpasar]
+  services: [accounting, tax, payroll, setup]
+  website: "https://baliaccountants.com/"
+- name: "Bali Accounting (Kosong Satu Group)"
+  areas: [Canggu]
+  services: [accounting, tax, payroll]
+  website: "https://baliaccounting.com/"
+- name: "Bali Legals"
+  areas: [Seminyak]
+  services: [tax, setup]
+  website: "https://balilegals.com/"
+- name: "Barata Business Advisory (KAP Barata)"
+  areas: [Denpasar]
+  services: [audit, tax, accounting]
+  website: "https://kapbarata.com/"
+- name: "CCI Consulting (PT Citra Consultant Indonesia)"
+  areas: [Sanur]
+  services: [accounting, tax, setup]
+  website: "https://www.cciindonesia.com/"
+- name: "Double M"
+  areas: [Denpasar]
+  services: [accounting, tax, payroll, setup]
+  website: "https://double-m.co/"
+- name: "Emerhub"
+  areas: [Kuta]
+  services: [accounting, tax, payroll, setup]
+  website: "https://emerhub.com/bali/"
+- name: "GMS Agency (Global Mega Servis)"
+  areas: [Kerobokan]
+  services: [accounting, tax, setup]
+  website: "https://gms-indonesia.co/"
+- name: "Gouf Consulting"
+  areas: [Denpasar]
+  services: [accounting, tax, audit]
+  website: "https://goufconsulting.com/"
+- name: "IBU Consulting"
+  areas: [Denpasar]
+  services: [accounting, tax, setup]
+  website: "https://ibu-consulting.com/"
+- name: "ISA Consulting"
+  areas: [Sanur]
+  services: [tax]
+  website: "https://isaconsultings.com/"
+- name: "KAP Chandra Dwiyanto / CMC Tax Consultant"
+  areas: [Denpasar]
+  services: [audit, tax, accounting]
+  website: "https://www.kapchandra-cmc.com/"
+- name: "KAP Dwi Haryadi Nugraha"
+  areas: [Denpasar]
+  services: [audit]
+  website: "http://kapdhn.com/"
+- name: "KAP Sodikin Budhananda Wandestarido"
+  areas: [Denpasar]
+  services: [audit]
+  website: "https://kap-sbw.com/"
+- name: "Lets Move Indonesia"
+  areas: [Seminyak, Canggu, Sanur]
+  services: [tax, payroll, setup]
+  website: "https://www.letsmoveindonesia.com/"
+- name: "LMATS Consulting"
+  areas: [Denpasar]
+  services: [accounting, tax]
+  website: "https://lmatsconsulting.com/"
+- name: "Mitra Pajak Bali"
+  areas: [Gianyar]
+  services: [tax, setup]
+  website: "https://mitrapajakbali.com/"
+- name: "Pratama (Prima Artha Konsultama)"
+  areas: [Denpasar]
+  services: [accounting, tax]
+  website: "https://www.pratama.co/"
+- name: "Sancita Consulting"
+  areas: [Kerobokan]
+  services: [accounting, tax, payroll]
+  website: "https://www.sancitaconsulting.com/"
+- name: "Satria Consulting"
+  areas: [Denpasar]
+  services: [accounting, tax]
+  website: "https://satriaconsulting.com/"
+- name: "Satvika Consulting"
+  areas: [Denpasar]
+  services: [accounting, tax]
+  website: "https://satvika.co.id/"
+- name: "Smart Advisory Solutions (SAS Bali)"
+  areas: [Canggu, Jimbaran]
+  services: [accounting, tax, payroll, setup]
+  website: "https://sasbali.com/"
+- name: "SWS Consulting"
+  areas: [Denpasar]
+  services: [tax]
+  website: "http://swsconsulting.co.id/"
+- name: "The Bali Accountant"
+  areas: [Kerobokan]
+  services: [accounting, tax, payroll, setup]
+  website: "https://thebaliaccountant.com/"
+- name: "Wulan Management & Tax Consultants"
+  areas: [Denpasar]
+  services: [accounting, tax]
+  website: "https://wulanconsultant.com/"

@@ -96,6 +96,13 @@ footer_products_title: "Produk Kami"
 footer_product_tikapro_desc: "Software Akuntansi Online"
 footer_product_tikapos_desc: "POS Multi-Outlet Offline-First"
 
+# Footer Resources
+footer_resources_title: "Sumber Daya"
+footer_resource_bali_firms: "Jasa Akuntansi & Pajak di Bali"
+footer_resource_bali_firms_desc: "Direktori kantor akuntansi dan konsultan pajak di Bali"
+footer_resource_lombok_firms: "Jasa Akuntansi & Pajak di Mataram & Lombok"
+footer_resource_lombok_firms_desc: "Direktori kantor akuntansi dan konsultan pajak di Mataram dan Lombok"
+
 # All Features Page - SEO
 allfeatures_keywords: "fitur software akuntansi, software invoice, rekonsiliasi bank, manajemen pengeluaran, laporan akuntansi, software purchase order, manajemen inventaris, pelacakan proyek keuangan, integrasi API, TikaPro"
 allfeatures_breadcrumb_home: "Beranda"
@@ -131,6 +138,22 @@ allfeatures_api_desc: "Hubungkan TikaPro dengan tools yang sudah ada melalui RES
 allfeatures_cta_title: "Siap untuk Memulai?"
 allfeatures_cta_desc: "Bergabunglah dengan bisnis visioner yang mempercayakan operasi keuangan mereka kepada TikaPro."
 allfeatures_cta_button: "Minta Demo"
+
+# Resources Page
+resources_breadcrumb: "Sumber Daya"
+resources_filter_all: "Semua area"
+resources_search_placeholder: "Cari nama atau layanan"
+resources_website: "Kunjungi website"
+resources_empty: "Tidak ada kantor yang sesuai dengan pencarian Anda."
+resources_disclaimer: "Daftar ini disediakan hanya sebagai informasi. TikaPro tidak berafiliasi dengan dan tidak merekomendasikan kantor-kantor ini. Detail dapat berubah — silakan konfirmasi langsung ke masing-masing kantor. Ingin kantor Anda ditambahkan atau diperbarui? Hubungi kami di sales@tikapro.id."
+resources_cta_title: "Bekerja sama dengan akuntan?"
+resources_cta_desc: "TikaPro menyediakan satu tempat bersama bagi Anda dan akuntan Anda untuk pembukuan, tagihan, dan laporan."
+resources_cta_button: "Minta Demo"
+resources_service_accounting: "Akuntansi & Pembukuan"
+resources_service_tax: "Konsultasi Pajak"
+resources_service_audit: "Audit"
+resources_service_payroll: "Penggajian"
+resources_service_setup: "Pendirian Usaha & Perizinan"
 
 # Footer
 footer_text: "© 2026 PT Tika Data Teknologi. Dibuat dengan penuh cinta di Bali. Semua hak dilindungi."

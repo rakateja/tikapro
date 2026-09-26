@@ -1,0 +1,59 @@
+# Accounting & tax service firms in Mataram and Lombok, listed on /resources/lombok/.
+# Only add firms verified from their own site or an official/business directory.
+# services keys map to i18n resources_service_*: accounting, tax, audit, payroll, setup
+- name: "Andy Matalatta – Konsultan Pajak & Training"
+  areas: [Lombok Barat]
+  services: [tax]
+  website: ""
+- name: "Asrarudin Tax Consultant"
+  areas: [Mataram]
+  services: [tax]
+  website: "https://www.asrarudintaxconsultant.com/"
+- name: "Discover Lombok Property"
+  areas: [Kuta (Mandalika)]
+  services: [accounting, tax]
+  website: "https://discoverlombokproperty.com/"
+- name: "Faridah Tax, Accounting & Financial Service"
+  areas: [Mataram]
+  services: [accounting, tax]
+  website: ""
+- name: "Hafiz Sanjani – Konsultan Pajak Lombok & Training"
+  areas: [Selong]
+  services: [tax]
+  website: ""
+- name: "Kantor Konsultan Pajak Dr. Yuli Astini"
+  areas: [Lombok Barat]
+  services: [tax]
+  website: ""
+- name: "KILTA Tax Consulting and Training"
+  areas: [Mataram]
+  services: [tax]
+  website: ""
+- name: "Konsultan Pajak Elvina Setiawati"
+  areas: [Lombok Barat]
+  services: [tax]
+  website: ""
+- name: "LILO Consultants (Lombok International Law Office)"
+  areas: [Mataram]
+  services: [accounting, tax, setup]
+  website: "https://liloindo.co.id/"
+- name: "Lombok Legal Consultants"
+  areas: [Praya]
+  services: [accounting, tax, payroll, setup]
+  website: "https://lomboklegal.com/"
+- name: "Prima Accounting Solution (PAS Lombok)"
+  areas: [Mataram]
+  services: [accounting, tax, payroll, setup]
+  website: ""
+- name: "Prima Mandiri Consulting (Azwar PMN Tax)"
+  areas: [Mataram]
+  services: [accounting, tax]
+  website: "https://www.azwarpmntax.com/"
+- name: "ROQ & CO Tax Consultants"
+  areas: [Mataram]
+  services: [accounting, tax, payroll]
+  website: "https://www.roqandco.com/"
+- name: "Synergy Pro (PT Lombok Prima Jaya)"
+  areas: [Kuta (Mandalika)]
+  services: [accounting, tax, payroll, setup]
+  website: "https://www.wearesynergypro.com/"

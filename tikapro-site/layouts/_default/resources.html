@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+{{ $firms := sort (index site.Data .Params.directory) "name" }}
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J79PPSRWJ2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-J79PPSRWJ2');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }}</title>
+    <meta name="description" content="{{ .Description }}">
+    <meta name="keywords" content="{{ .Params.keywords }}">
+    <meta name="author" content="PT Tika Data Teknologi">
+    <link rel="canonical" href="{{ .Permalink }}">
+    {{ range .AllTranslations }}
+    <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
+    {{ end }}
+    {{ range .AllTranslations }}{{ if eq .Language.Lang "en" }}
+    <link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+    {{ end }}{{ end }}
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:title" content="{{ .Title }}">
+    <meta property="og:description" content="{{ .Description }}">
+    <meta property="og:image" content="{{ .Site.BaseURL }}logotikapro.png">
+    <meta property="og:site_name" content="TikaPro">
+    <meta property="og:locale" content="{{ .Site.Language.Lang }}_{{ upper .Site.Language.Lang }}">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ .Title }}">
+    <meta name="twitter:description" content="{{ .Description }}">
+    <meta name="twitter:image" content="{{ .Site.BaseURL }}logotikapro.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebPage",
+                "@id": "{{ .Permalink }}",
+                "url": "{{ .Permalink }}",
+                "name": "{{ .Title }}",
+                "description": "{{ .Description }}",
+                "inLanguage": "{{ .Site.Language.Lang }}",
+                "isPartOf": {
+                    "@type": "WebSite",
+                    "name": "TikaPro",
+                    "url": "https://tikapro.id"
+                },
+                "mainEntity": {
+                    "@type": "ItemList",
+                    "numberOfItems": {{ len $firms }},
+                    "itemListElement": [
+                        {{- range $i, $f := $firms }}{{ if $i }},{{ end }}
+                        {
+                            "@type": "ListItem",
+                            "position": {{ add $i 1 }},
+                            "item": {
+                                "@type": "AccountingService",
+                                "name": {{ $f.name }},
+                                {{- with $f.website }}
+                                "url": {{ . }},
+                                {{- end }}
+                                "address": {
+                                    "@type": "PostalAddress",
+                                    "addressLocality": {{ delimit $f.areas ", " }},
+                                    "addressRegion": {{ $.Params.region }},
+                                    "addressCountry": "ID"
+                                }
+                            }
+                        }
+                        {{- end }}
+                    ]
+                }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "{{ i18n "allfeatures_breadcrumb_home" }}",
+                        "item": "{{ .Site.Home.Permalink }}"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "{{ i18n "resources_breadcrumb" }}",
+                        "item": "{{ .Permalink }}"
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --primary-color: #FF6B00;
+    --secondary-color: #001F3F;
+    --primary-hover: #FF8533;
+    --secondary-hover: #003366;
+    --text-color: #1f2937;
+    --light-bg: #f3f4f6;
+    --white: #ffffff;
+}
+
+body {
+    padding-top: 60px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+}
+
+/* Navbar */
+.navbar {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0.75rem 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #333;
+}
+
+.logo-img {
+    height: 48px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #555;
+}
+
+.nav-link {
+    color: var(--secondary-color);
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.dropdown-toggle i {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-toggle i {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 0.5rem 0;
+    min-width: 280px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: block;
+    padding: 0.75rem 1.25rem;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    white-space: nowrap;
+}
+
+.dropdown-item:hover {
+    background-color: var(--light-bg);
+    color: var(--primary-color);
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: #e5e7eb;
+    margin: 0.25rem 0;
+}
+
+.dropdown-item-highlight {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* Language Switcher */
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.lang-btn {
+    padding: 0.25rem 0.6rem;
+    text-decoration: none;
+    color: #6b7280;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: background-color 0.2s, color 0.2s;
+    line-height: 1.6;
+}
+
+.lang-btn:not(:last-child) {
+    border-right: 1px solid #e5e7eb;
+}
+
+.lang-flag {
+    width: 1.2em;
+    line-height: 1;
+    margin-right: 0.35rem;
+    border-radius: 2px;
+    vertical-align: middle;
+}
+
+.lang-btn:hover {
+    background-color: var(--light-bg);
+    color: var(--secondary-color);
+}
+
+.lang-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* CTA Button */
+.cta-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Features Page Hero */
+.features-page-hero {
+    padding: 3rem 2rem 2rem;
+    text-align: center;
+    background: var(--white);
+}
+
+.features-page-hero h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text-color);
+}
+
+.features-page-hero p {
+    font-size: 1.05rem;
+    max-width: 520px;
+    margin: 0 auto;
+    color: #6b7280;
+    line-height: 1.7;
+}
+
+/* Resources Directory */
+.resources-directory {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem 2rem 3rem;
+}
+
+.resources-toolbar {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.resources-search,
+.resources-area {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    font: inherit;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    background: #fff;
+}
+
+.resources-search {
+    flex: 1;
+    min-width: 0;
+}
+
+.resources-search:focus,
+.resources-area:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.resources-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.resources-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.resources-card[hidden] {
+    display: none;
+}
+
+.resources-card:hover {
+    border-color: var(--primary-color);
+}
+
+.resources-card h3 {
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.resources-card-area {
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.resources-card-area i {
+    color: var(--primary-color);
+    margin-right: 0.25rem;
+}
+
+.resources-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.resources-tags li {
+    font-size: 0.78rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: var(--light-bg);
+    color: var(--secondary-color);
+}
+
+.resources-card-link {
+    margin-top: auto;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.resources-card-link i {
+    font-size: 0.75rem;
+    margin-left: 0.25rem;
+}
+
+.resources-card-link:hover {
+    color: var(--primary-hover);
+}
+
+.resources-empty {
+    text-align: center;
+    color: #6b7280;
+    padding: 2rem 0;
+}
+
+.resources-disclaimer {
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+/* Features CTA */
+.features-cta {
+    text-align: center;
+    padding: 2.5rem 2rem;
+    background: var(--light-bg);
+}
+
+.features-cta h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.features-cta p {
+    font-size: 1rem;
+    color: #6b7280;
+    max-width: 460px;
+    margin: 0 auto 1rem;
+    line-height: 1.6;
+}
+
+/* Footer */
+.footer {
+    background: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Hamburger button */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--secondary-color);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile menu */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 999;
+    padding: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+}
+
+.mobile-menu.open {
+    display: flex;
+}
+
+.mobile-menu .nav-link {
+    padding: 0.6rem 0.5rem;
+    border-bottom: 1px solid #f3f4f6;
+    font-size: 1rem;
+}
+
+.mobile-menu .mobile-submenu {
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.mobile-menu .mobile-submenu a {
+    padding: 0.5rem 0.5rem;
+    color: #555;
+    text-decoration: none;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #f9fafb;
+}
+
+.mobile-menu .mobile-submenu a:hover {
+    color: var(--primary-color);
+}
+
+.mobile-menu .mobile-lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.5rem;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.mobile-menu .mobile-lang-label {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-right: 0.25rem;
+}
+
+.mobile-menu .lang-switcher {
+    display: flex;
+}
+
+.mobile-menu .mobile-actions {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.6rem 0.5rem;
+    margin-top: 0.25rem;
+}
+
+.mobile-menu .mobile-actions a {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.mobile-menu .mobile-actions .btn-login {
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+.mobile-menu .mobile-actions .btn-signup {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .navbar-right {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .logo-img {
+        height: 32px;
+    }
+
+    .features-page-hero {
+        padding: 2rem 1rem 1.5rem;
+    }
+
+    .features-page-hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .resources-directory {
+        padding: 1rem 1rem 2rem;
+    }
+
+    .resources-toolbar {
+        flex-direction: column;
+    }
+
+    .resources-list {
+        grid-template-columns: 1fr;
+    }
+
+    .features-cta {
+        padding: 2rem 1rem;
+    }
+}
+
+/* WhatsApp floating button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 990;
+    text-decoration: none;
+}
+
+.whatsapp-float-text {
+    background-color: var(--white);
+    color: var(--text-color);
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: box-shadow 0.2s ease;
+}
+
+.whatsapp-float-icon {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    background-color: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatsapp-float:hover .whatsapp-float-icon {
+    transform: scale(1.08);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-float:hover .whatsapp-float-text {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.whatsapp-float-icon i {
+    color: var(--white);
+    font-size: 28px;
+}
+
+@media (max-width: 480px) {
+    .whatsapp-float {
+        bottom: 1rem;
+        right: 1rem;
+        gap: 0.5rem;
+    }
+
+    .whatsapp-float-text {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8rem;
+    }
+
+    .whatsapp-float-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .whatsapp-float-icon i {
+        font-size: 24px;
+    }
+}
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-left">
+                <a href="{{ .Site.Home.RelPermalink }}" class="navbar-logo">
+                    <img src="/logotikapro.png" alt="TikaPro Logo" class="logo-img">
+                </a>
+                <div class="nav-links">
+                    <div class="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">{{ i18n "nav_products" }} <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="{{ .Site.Home.RelPermalink }}#feature-reports" class="dropdown-item">{{ i18n "nav_product_reports" }}</a>
+                            <a href="{{ .Site.Home.RelPermalink }}#feature-bills-expense" class="dropdown-item">{{ i18n "nav_product_bills_expense" }}</a>
+                            <a href="{{ .Site.Home.RelPermalink }}#feature-sales" class="dropdown-item">{{ i18n "nav_product_sales" }}</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="{{ "features/" | relLangURL }}" class="dropdown-item dropdown-item-highlight">{{ i18n "nav_product_all_features" }}</a>
+                        </div>
+                    </div>
+                    <a href="https://blog.tikapro.id" class="nav-link">{{ i18n "nav_blog" }}</a>
+                    <a href="{{ .Site.Home.RelPermalink }}#about-us" class="nav-link">{{ i18n "nav_about" }}</a>
+                    <a href="{{ .Site.Home.RelPermalink }}#contact-section" class="nav-link">{{ i18n "nav_contact" }}</a>
+                </div>
+            </div>
+            <div class="navbar-right">
+                <div class="lang-switcher">
+                    {{ range .AllTranslations }}
+                    <a href="{{ .Permalink }}" class="lang-btn{{ if eq .Language.Lang $.Site.Language.Lang }} active{{ end }}" lang="{{ .Language.Lang }}"><span class="fi fi-{{ .Language.Params.flag }} lang-flag"></span>{{ .Language.LanguageName }}</a>
+                    {{ end }}
+                </div>
+                <a href="https://app.tikadata.com/login" class="nav-link" target="_blank" rel="noopener noreferrer">{{ i18n "nav_login" }}</a>
+                <a href="https://app.tikadata.com/register" class="nav-link" target="_blank" rel="noopener noreferrer">{{ i18n "nav_signup" }}</a>
+            </div>
+            <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-lang-switcher">
+            <span class="mobile-lang-label">Language:</span>
+            <div class="lang-switcher">
+                {{ range .AllTranslations }}
+                <a href="{{ .Permalink }}" class="lang-btn{{ if eq .Language.Lang $.Site.Language.Lang }} active{{ end }}" lang="{{ .Language.Lang }}"><span class="fi fi-{{ .Language.Params.flag }} lang-flag"></span>{{ .Language.LanguageName }}</a>
+                {{ end }}
+            </div>
+        </div>
+        <a href="{{ .Site.Home.RelPermalink }}#features" class="nav-link">{{ i18n "nav_products" }}</a>
+        <div class="mobile-submenu">
+            <a href="{{ .Site.Home.RelPermalink }}#feature-reports">{{ i18n "nav_product_reports" }}</a>
+            <a href="{{ .Site.Home.RelPermalink }}#feature-bills-expense">{{ i18n "nav_product_bills_expense" }}</a>
+            <a href="{{ .Site.Home.RelPermalink }}#feature-sales">{{ i18n "nav_product_sales" }}</a>
+            <a href="{{ "features/" | relLangURL }}" style="font-weight: 600; color: var(--primary-color);">{{ i18n "nav_product_all_features" }}</a>
+        </div>
+        <a href="https://blog.tikapro.id" class="nav-link">{{ i18n "nav_blog" }}</a>
+        <a href="{{ .Site.Home.RelPermalink }}#about-us" class="nav-link">{{ i18n "nav_about" }}</a>
+        <a href="{{ .Site.Home.RelPermalink }}#contact-section" class="nav-link">{{ i18n "nav_contact" }}</a>
+        <div class="mobile-actions">
+            <a href="https://app.tikadata.com/login" class="btn-login" target="_blank" rel="noopener noreferrer">{{ i18n "nav_login" }}</a>
+            <a href="https://app.tikadata.com/register" class="btn-signup" target="_blank" rel="noopener noreferrer">{{ i18n "nav_signup" }}</a>
+        </div>
+    </div>
+
+    <!-- Resources Hero -->
+    <section class="features-page-hero">
+        <h1>{{ .Params.heading }}</h1>
+        <p>{{ .Params.subtitle }}</p>
+    </section>
+
+    <!-- Firm Directory -->
+    <section class="resources-directory">
+        <div class="resources-toolbar">
+            <input type="search" id="firm-search" class="resources-search" placeholder="{{ i18n "resources_search_placeholder" }}" aria-label="{{ i18n "resources_search_placeholder" }}">
+            <select id="firm-area" class="resources-area" aria-label="{{ i18n "resources_filter_all" }}">
+                <option value="">{{ i18n "resources_filter_all" }}</option>
+                {{ $areas := slice }}
+                {{ range $firms }}{{ $areas = $areas | append .areas }}{{ end }}
+                {{ range sort (uniq $areas) }}
+                <option value="{{ . }}">{{ . }}</option>
+                {{ end }}
+            </select>
+        </div>
+        <ul class="resources-list" id="firm-list">
+            {{ range $firms }}
+            <li class="resources-card" data-areas="|{{ delimit .areas "|" }}|">
+                <div class="resources-card-head">
+                    <h3>{{ .name }}</h3>
+                    <span class="resources-card-area"><i class="fas fa-map-marker-alt"></i> {{ delimit .areas ", " }}</span>
+                </div>
+                <ul class="resources-tags">
+                    {{ range .services }}
+                    <li>{{ i18n (printf "resources_service_%s" .) }}</li>
+                    {{ end }}
+                </ul>
+                {{ with .website }}
+                <a href="{{ . }}" class="resources-card-link" target="_blank" rel="noopener noreferrer nofollow">{{ i18n "resources_website" }} <i class="fas fa-external-link-alt"></i></a>
+                {{ end }}
+            </li>
+            {{ end }}
+        </ul>
+        <p class="resources-empty" id="firm-empty" hidden>{{ i18n "resources_empty" }}</p>
+        <p class="resources-disclaimer">{{ i18n "resources_disclaimer" }}</p>
+    </section>
+
+    <!-- CTA -->
+    <section class="features-cta">
+        <h2>{{ i18n "resources_cta_title" }}</h2>
+        <p>{{ i18n "resources_cta_desc" }}</p>
+        <a href="https://app.tikadata.com/register" class="cta-button">{{ i18n "resources_cta_button" }}</a>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p>{{ i18n "footer_text" }}</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/6281325763731" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        <span class="whatsapp-float-text">Need help? Chat with us.</span>
+        <span class="whatsapp-float-icon"><i class="fab fa-whatsapp"></i></span>
+    </a>
+
+    <script src="/js/script.js"></script>
+    <script>
+        (function () {
+            var search = document.getElementById('firm-search');
+            var area = document.getElementById('firm-area');
+            var cards = document.querySelectorAll('#firm-list > .resources-card');
+            var empty = document.getElementById('firm-empty');
+
+            function filter() {
+                var q = search.value.trim().toLowerCase();
+                var a = area.value;
+                var shown = 0;
+                cards.forEach(function (card) {
+                    var match = (!a || card.dataset.areas.indexOf('|' + a + '|') !== -1) && (!q || card.textContent.toLowerCase().indexOf(q) !== -1);
+                    card.hidden = !match;
+                    if (match) shown++;
+                });
+                empty.hidden = shown > 0;
+            }
+
+            search.addEventListener('input', filter);
+            area.addEventListener('change', filter);
+        })();
+    </script>
+</body>
+</html>

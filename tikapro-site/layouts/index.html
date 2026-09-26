@@ -580,10 +580,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-grid {
-    max-width: 900px;
+    max-width: 1100px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
 }
 
@@ -1194,6 +1194,23 @@ h1, h2, h3, h4, h5, h6 {
                         <a href="https://tikapos.com" target="_blank" rel="noopener noreferrer">
                             <span class="footer-product-name">TikaPOS</span>
                             <span class="footer-product-desc">{{ i18n "footer_product_tikapos_desc" }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h2>{{ i18n "footer_resources_title" }}</h2>
+                <ul class="footer-products">
+                    <li>
+                        <a href="{{ "resources/bali/" | relLangURL }}">
+                            <span class="footer-product-name">{{ i18n "footer_resource_bali_firms" }}</span>
+                            <span class="footer-product-desc">{{ i18n "footer_resource_bali_firms_desc" }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ "resources/lombok/" | relLangURL }}">
+                            <span class="footer-product-name">{{ i18n "footer_resource_lombok_firms" }}</span>
+                            <span class="footer-product-desc">{{ i18n "footer_resource_lombok_firms_desc" }}</span>
                         </a>
                     </li>
                 </ul>
