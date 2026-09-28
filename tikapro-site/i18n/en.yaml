@@ -96,6 +96,11 @@ footer_products_title: "Our Products"
 footer_product_tikapro_desc: "Online Accounting Software"
 footer_product_tikapos_desc: "Offline-First Multi-Outlet POS"
 
+# Footer Features
+footer_features_title: "Features"
+footer_feature_po: "Purchase Order Software"
+footer_feature_po_desc: "Create, approve, and track POs with 3-way matching"
+
 # Footer Resources
 footer_resources_title: "Resources"
 footer_resource_bali_firms: "Bali Accounting & Tax Services"

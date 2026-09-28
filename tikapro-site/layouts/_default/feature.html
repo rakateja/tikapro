@@ -11,15 +11,17 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ i18n "page_title" }}</title>
-    <meta name="description" content="{{ i18n "page_description" }}">
-    <meta name="keywords" content="{{ i18n "page_keywords" }}">
+    <title>{{ .Title }}</title>
+    <meta name="description" content="{{ .Description }}">
+    <meta name="keywords" content="{{ .Params.keywords }}">
     <meta name="author" content="PT Tika Data Teknologi">
     <link rel="canonical" href="{{ .Permalink }}">
     {{ range .AllTranslations }}
     <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
     {{ end }}
-    <link rel="alternate" hreflang="x-default" href="{{ .Site.BaseURL }}">
+    {{ range .AllTranslations }}{{ if eq .Language.Lang "en" }}
+    <link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+    {{ end }}{{ end }}
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -31,58 +33,78 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ .Permalink }}">
-    <meta property="og:title" content="{{ i18n "og_title" }}">
-    <meta property="og:description" content="{{ i18n "og_description" }}">
+    <meta property="og:title" content="{{ .Title }}">
+    <meta property="og:description" content="{{ .Description }}">
     <meta property="og:image" content="{{ .Site.BaseURL }}logotikapro.png">
     <meta property="og:site_name" content="TikaPro">
     <meta property="og:locale" content="{{ .Site.Language.Lang }}_{{ upper .Site.Language.Lang }}">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ i18n "twitter_title" }}">
-    <meta name="twitter:description" content="{{ i18n "twitter_description" }}">
+    <meta name="twitter:title" content="{{ .Title }}">
+    <meta name="twitter:description" content="{{ .Description }}">
     <meta name="twitter:image" content="{{ .Site.BaseURL }}logotikapro.png">
+
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "TikaPro",
-        "url": "https://tikapro.id",
-        "logo": "https://tikapro.id/logotikapro.png",
-        "image": "https://tikapro.id/logotikapro.png",
-        "description": "{{ i18n "page_description" }}",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Web",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD",
-            "availability": "https://schema.org/InStock"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "PT Tika Data Teknologi",
-            "url": "https://tikapro.id",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https://tikapro.id/logotikapro.png"
+        "@graph": [
+            {
+                "@type": "WebPage",
+                "@id": "{{ .Permalink }}",
+                "url": "{{ .Permalink }}",
+                "name": {{ .Title | jsonify }},
+                "description": {{ .Description | jsonify }},
+                "inLanguage": "{{ .Site.Language.Lang }}",
+                "isPartOf": {
+                    "@type": "WebSite",
+                    "name": "TikaPro",
+                    "url": "https://tikapro.id"
+                }
             },
-            "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+628311-9565-157",
-                "email": "raka@tikadata.com",
-                "contactType": "sales"
-            },
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Bali",
-                "addressCountry": "ID"
-            }
-        }
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "{{ i18n "allfeatures_breadcrumb_home" }}",
+                        "item": "{{ .Site.Home.Permalink }}"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "{{ i18n "allfeatures_title" }}",
+                        "item": "{{ "features/" | absLangURL }}"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": {{ .Params.heading | jsonify }},
+                        "item": "{{ .Permalink }}"
+                    }
+                ]
+            }{{ with .Params.faqs }},
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {{- range $i, $f := . }}{{ if $i }},{{ end }}
+                    {
+                        "@type": "Question",
+                        "name": {{ $f.q | jsonify }},
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": {{ $f.a | jsonify }}
+                        }
+                    }{{ end }}
+                ]
+            }{{ end }}
+        ]
     }
     </script>
+
     <style>
 * {
     margin: 0;
@@ -297,39 +319,7 @@ h1, h2, h3, h4, h5, h6 {
     color: white;
 }
 
-/* Hero Section */
-.hero {
-    padding: 2rem 2rem;
-}
-
-.hero-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 3rem;
-}
-
-.hero-content {
-    flex: 1;
-    min-width: 400px;
-}
-
-.hero h1 {
-    font-size: 2rem;
-    font-weight: 500;
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.03em;
-}
-
-.hero p {
-    font-size: 1.15rem;
-    font-weight: 400;
-    color: var(--secondary-color);
-    max-width: 600px;
-    margin-bottom: 1.5rem;
-}
-
+/* CTA Button */
 .cta-button {
     display: inline-block;
     padding: 0.75rem 1.5rem;
@@ -345,232 +335,331 @@ h1, h2, h3, h4, h5, h6 {
     background-color: var(--primary-hover);
 }
 
-/* Features Section */
-.features {
-    padding: 3rem 1rem;
+/* Feature Page Hero */
+.fp-hero {
+    padding: 3rem 2rem;
+    text-align: center;
+    background: linear-gradient(180deg, var(--white) 0%, var(--light-bg) 100%);
+}
+
+.fp-eyebrow {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+}
+
+.fp-hero h1 {
+    font-size: 2.25rem;
+    color: var(--secondary-color);
+    max-width: 800px;
+    margin: 0 auto 1rem;
+    letter-spacing: -0.03em;
+}
+
+.fp-hero p {
+    font-size: 1.1rem;
+    color: #4B5563;
+    max-width: 720px;
+    margin: 0 auto 0.5rem;
+}
+
+.fp-cta-row {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.cta-button.secondary {
+    background: transparent;
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+}
+
+.cta-button.secondary:hover {
+    background: var(--secondary-color);
+    color: var(--white);
+}
+
+/* Feature Page Sections */
+.fp-section {
+    padding: 3.5rem 1.5rem;
+}
+
+.fp-section.alt {
     background: var(--light-bg);
 }
 
-.features h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.feature-card {
-    padding: 1.5rem;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    text-decoration: none;
-    color: inherit;
-    transition: box-shadow 0.3s ease;
-}
-
-.feature-card:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.feature-card i {
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-.feature-card h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-}
-
-.feature-card p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #4B5563;
-}
-
-/* Feature Detail Sections */
-.feature-row {
-    display: flex;
-    align-items: center;
-    gap: 4rem;
+.fp-inner {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 3rem 2rem;
 }
 
-.feature-row.reverse {
-    flex-direction: row-reverse;
-}
-
-.feature-row-text {
-    flex: 1;
-}
-
-.feature-row-text h2 {
+.fp-section h2 {
     font-size: 1.75rem;
-    margin-bottom: 1rem;
     color: var(--secondary-color);
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
-.feature-row-text > p {
+.fp-lead {
+    max-width: 760px;
+    margin: 0 auto 2.5rem;
+    text-align: center;
     font-size: 1.05rem;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
     color: #4B5563;
 }
 
-.feature-list {
-    list-style: none;
-    padding: 0;
-}
-
-.feature-list li {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.75rem;
-    font-size: 1rem;
-    color: #4B5563;
-}
-
-.feature-list i {
-    color: var(--primary-color);
-    font-size: 1rem;
-}
-
-.feature-row-image {
-    flex: 1;
-}
-
-.feature-row-image img {
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Image Slideshow */
-.image-slideshow {
-    position: relative;
-    max-width: 500px;
-    overflow: hidden;
-}
-
-.slide-wrapper {
-    position: relative;
-}
-
-.slide-wrapper img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: none;
-}
-
-.slide-wrapper img.active {
-    display: block;
-}
-
-.slide-dots {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
-
-.slide-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #ccc;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    transition: background 0.3s ease;
-}
-
-.slide-dot.active {
-    background: var(--primary-color);
-}
-
-/* Benefits Section */
-.benefits {
-    background: #f8f9fa;
-    padding: 2rem 1rem;
-}
-
-.benefits h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-}
-
-.benefits-grid {
+.fp-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    max-width: 1000px;
-    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
 }
 
-.benefit-item {
-    text-align: center;
-    padding: 1rem;
+.fp-card {
+    padding: 1.5rem;
+    background: var(--white);
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
 }
 
-.benefit-item h3 {
+.fp-card i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+}
+
+.fp-card h3 {
+    font-size: 1.1rem;
     margin-bottom: 0.5rem;
 }
 
-.benefit-item p {
+.fp-card p {
     color: #4B5563;
 }
 
-/* About Us Section */
-.about-us {
-    padding: 3rem 1rem;
-    background: var(--light-bg);
+.fp-steps {
+    list-style: none;
+    counter-reset: step;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.25rem;
 }
 
-.about-us h2 {
+.fp-steps li {
+    counter-increment: step;
+    background: var(--white);
+    border-radius: 8px;
+    border-top: 3px solid var(--primary-color);
+    padding: 1.25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.fp-steps li::before {
+    content: counter(step, decimal-leading-zero);
+    display: block;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.fp-steps h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+}
+
+.fp-steps p {
+    font-size: 0.95rem;
+    color: #4B5563;
+}
+
+.fp-feature {
+    display: flex;
+    gap: 3rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.fp-feature:last-child {
+    border-bottom: none;
+}
+
+.fp-feature-title {
+    flex: 0 0 280px;
+}
+
+.fp-feature-title i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+}
+
+.fp-feature-title h3 {
+    font-size: 1.3rem;
+    color: var(--secondary-color);
+}
+
+.fp-feature-body {
+    flex: 1;
+}
+
+.fp-feature-body > p {
+    color: #4B5563;
+    margin-bottom: 1rem;
+}
+
+.fp-list {
+    list-style: none;
+}
+
+.fp-list li {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.6rem;
+    color: #4B5563;
+}
+
+.fp-list i {
+    color: var(--primary-color);
+    margin-top: 0.3rem;
+}
+
+.fp-table-wrap {
+    overflow-x: auto;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.fp-table {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: collapse;
+}
+
+.fp-table th,
+.fp-table td {
+    padding: 0.85rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+    font-variant-numeric: tabular-nums;
+}
+
+.fp-table th {
+    background: var(--secondary-color);
+    color: var(--white);
+    font-weight: 600;
+}
+
+.fp-table .ok {
+    color: #15803d;
+    font-weight: 600;
+}
+
+.fp-table .flag {
+    color: #b91c1c;
+    font-weight: 600;
+}
+
+.fp-note {
+    margin-top: 1rem;
     text-align: center;
-    margin-bottom: 2rem;
-    font-size: 2rem;
-    color: var(--text-color);
+    color: #4B5563;
 }
 
-.about-container {
+.fp-callout {
+    background: var(--white);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.fp-callout h3 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.fp-callout p {
+    color: #4B5563;
+}
+
+.fp-journal {
+    margin-top: 0.75rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.9rem;
+    background: var(--light-bg);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    overflow-x: auto;
+    white-space: pre;
+}
+
+.fp-checklist {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: 0.75rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.fp-checklist li {
+    display: flex;
+    gap: 0.75rem;
+    color: #4B5563;
+}
+
+.fp-checklist i {
+    color: var(--primary-color);
+    margin-top: 0.3rem;
+}
+
+.fp-faq {
     max-width: 800px;
     margin: 0 auto;
 }
 
-.about-content {
-    text-align: center;
+.fp-faq details {
+    background: var(--white);
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem;
 }
 
-.about-content p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--text-color);
-    margin-bottom: 1.5rem;
-}
-
-.about-content p:last-child {
-    margin-bottom: 0;
-}
-
-.about-content strong {
-    color: var(--primary-color);
+.fp-faq summary {
+    cursor: pointer;
     font-weight: 600;
+    color: var(--secondary-color);
+}
+
+.fp-faq details p {
+    margin-top: 0.75rem;
+    color: #4B5563;
+}
+
+.fp-final-cta {
+    background: var(--secondary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 3rem 1.5rem;
+}
+
+.fp-final-cta h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.fp-final-cta p {
+    max-width: 640px;
+    margin: 0 auto;
+    color: #d1d5db;
 }
 
 /* Contact + Products Footer Section */
@@ -635,6 +724,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.9rem;
     color: #6b7280;
 }
+
 
 /* Footer */
 .footer {
@@ -779,32 +869,6 @@ h1, h2, h3, h4, h5, h6 {
         padding-top: 60px;
     }
 
-    .hero {
-        padding: 1rem;
-    }
-
-    .hero-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 1.5rem;
-    }
-
-    .hero-content {
-        min-width: unset;
-        flex: 1;
-        width: 100%;
-    }
-
-    .hero h1 {
-        font-size: 1.75rem;
-        margin-bottom: 1rem;
-    }
-
-    .hero p {
-        font-size: 1rem;
-        padding: 0 1rem;
-    }
-
     .nav-links {
         display: none;
     }
@@ -821,36 +885,34 @@ h1, h2, h3, h4, h5, h6 {
         height: 32px;
     }
 
-    .feature-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .feature-row {
-        flex-direction: column;
-        gap: 2rem;
-        text-align: center;
+    .fp-hero {
         padding: 2rem 1rem;
     }
 
-    .feature-row.reverse {
-        flex-direction: column;
+    .fp-hero h1 {
+        font-size: 1.6rem;
     }
 
-    .feature-row-text h2 {
+    .fp-hero p {
+        font-size: 1rem;
+    }
+
+    .fp-section {
+        padding: 2.5rem 1rem;
+    }
+
+    .fp-section h2,
+    .fp-final-cta h2 {
         font-size: 1.5rem;
     }
 
-    .feature-row-image img {
-        max-width: 100%;
+    .fp-feature {
+        flex-direction: column;
+        gap: 1rem;
     }
 
-    .about-us {
-        padding: 2rem 1rem;
-    }
-
-    .about-content p {
-        font-size: 1rem;
-        padding: 0 0.5rem;
+    .fp-feature-title {
+        flex: none;
     }
 
     .footer-grid {
@@ -861,16 +923,6 @@ h1, h2, h3, h4, h5, h6 {
 
     .footer-products a {
         align-items: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero h1 {
-        font-size: 1.5rem;
-    }
-
-    .feature-card {
-        padding: 1rem;
     }
 }
 
@@ -956,23 +1008,23 @@ h1, h2, h3, h4, h5, h6 {
     <nav class="navbar">
         <div class="navbar-container">
             <div class="navbar-left">
-                <a href="{{ .Site.BaseURL }}" class="navbar-logo">
+                <a href="{{ .Site.Home.RelPermalink }}" class="navbar-logo">
                     <img src="/logotikapro.png" alt="TikaPro Logo" class="logo-img">
                 </a>
                 <div class="nav-links">
                     <div class="dropdown">
                         <a href="#" class="nav-link dropdown-toggle">{{ i18n "nav_products" }} <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="#feature-reports" class="dropdown-item">{{ i18n "nav_product_reports" }}</a>
-                            <a href="#feature-bills-expense" class="dropdown-item">{{ i18n "nav_product_bills_expense" }}</a>
-                            <a href="#feature-sales" class="dropdown-item">{{ i18n "nav_product_sales" }}</a>
+                            <a href="{{ .Site.Home.RelPermalink }}#feature-reports" class="dropdown-item">{{ i18n "nav_product_reports" }}</a>
+                            <a href="{{ .Site.Home.RelPermalink }}#feature-bills-expense" class="dropdown-item">{{ i18n "nav_product_bills_expense" }}</a>
+                            <a href="{{ .Site.Home.RelPermalink }}#feature-sales" class="dropdown-item">{{ i18n "nav_product_sales" }}</a>
                             <div class="dropdown-divider"></div>
                             <a href="{{ "features/" | relLangURL }}" class="dropdown-item dropdown-item-highlight">{{ i18n "nav_product_all_features" }}</a>
                         </div>
                     </div>
                     <a href="https://blog.tikapro.id" class="nav-link">{{ i18n "nav_blog" }}</a>
-                    <a href="#about-us" class="nav-link">{{ i18n "nav_about" }}</a>
-                    <a href="#contact-section" class="nav-link">{{ i18n "nav_contact" }}</a>
+                    <a href="{{ .Site.Home.RelPermalink }}#about-us" class="nav-link">{{ i18n "nav_about" }}</a>
+                    <a href="{{ .Site.Home.RelPermalink }}#contact-section" class="nav-link">{{ i18n "nav_contact" }}</a>
                 </div>
             </div>
             <div class="navbar-right">
@@ -1002,16 +1054,16 @@ h1, h2, h3, h4, h5, h6 {
                 {{ end }}
             </div>
         </div>
-        <a href="#features" class="nav-link">{{ i18n "nav_products" }}</a>
+        <a href="{{ .Site.Home.RelPermalink }}#features" class="nav-link">{{ i18n "nav_products" }}</a>
         <div class="mobile-submenu">
-            <a href="#feature-reports">{{ i18n "nav_product_reports" }}</a>
-            <a href="#feature-bills-expense">{{ i18n "nav_product_bills_expense" }}</a>
-            <a href="#feature-sales">{{ i18n "nav_product_sales" }}</a>
+            <a href="{{ .Site.Home.RelPermalink }}#feature-reports">{{ i18n "nav_product_reports" }}</a>
+            <a href="{{ .Site.Home.RelPermalink }}#feature-bills-expense">{{ i18n "nav_product_bills_expense" }}</a>
+            <a href="{{ .Site.Home.RelPermalink }}#feature-sales">{{ i18n "nav_product_sales" }}</a>
             <a href="{{ "features/" | relLangURL }}" style="font-weight: 600; color: var(--primary-color);">{{ i18n "nav_product_all_features" }}</a>
         </div>
         <a href="https://blog.tikapro.id" class="nav-link">{{ i18n "nav_blog" }}</a>
-        <a href="#about-us" class="nav-link">{{ i18n "nav_about" }}</a>
-        <a href="#contact-section" class="nav-link">{{ i18n "nav_contact" }}</a>
+        <a href="{{ .Site.Home.RelPermalink }}#about-us" class="nav-link">{{ i18n "nav_about" }}</a>
+        <a href="{{ .Site.Home.RelPermalink }}#contact-section" class="nav-link">{{ i18n "nav_contact" }}</a>
         <div class="mobile-actions">
             <a href="https://app.tikadata.com/login" class="btn-login" target="_blank" rel="noopener noreferrer">{{ i18n "nav_login" }}</a>
             <a href="https://app.tikadata.com/register" class="btn-signup" target="_blank" rel="noopener noreferrer">{{ i18n "nav_signup" }}</a>
@@ -1019,150 +1071,161 @@ h1, h2, h3, h4, h5, h6 {
     </div>
 
     <!-- Hero -->
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>{{ i18n "hero_title" | safeHTML }}</h1>
-                <p>{{ i18n "hero_description" | safeHTML }}</p>
-                <a href="https://app.tikadata.com/register" class="cta-button">{{ i18n "hero_cta" }}</a>
-            </div>
+    <section class="fp-hero">
+        <span class="fp-eyebrow">{{ .Params.eyebrow }}</span>
+        <h1>{{ .Params.heading }}</h1>
+        <p>{{ .Params.subtitle }}</p>
+        <div class="fp-cta-row">
+            <a href="https://app.tikadata.com/register" class="cta-button">{{ .Params.cta_primary }}</a>
+            <a href="#how-it-works" class="cta-button secondary">{{ .Params.cta_secondary }}</a>
         </div>
     </section>
 
-    <!-- Features Overview -->
-    <section class="features" id="features">
-        <h2>{{ i18n "features_title" }}</h2>
-        <div class="feature-grid">
-            <a href="#feature-reports" class="feature-card">
-                <i class="fas fa-chart-bar"></i>
-                <h3>{{ i18n "feature_reports_title" }}</h3>
-                <p>{{ i18n "feature_reports_desc" }}</p>
-            </a>
-            <a href="#feature-bills-expense" class="feature-card">
-                <i class="fas fa-file-invoice-dollar"></i>
-                <h3>{{ i18n "feature_bills_title" }}</h3>
-                <p>{{ i18n "feature_bills_desc" }}</p>
-            </a>
-            <a href="#feature-sales" class="feature-card">
-                <i class="fas fa-cash-register"></i>
-                <h3>{{ i18n "feature_sales_title" }}</h3>
-                <p>{{ i18n "feature_sales_desc" }}</p>
-            </a>
-            <div class="feature-card">
-                <i class="fas fa-boxes"></i>
-                <h3>{{ i18n "feature_inventory_title" }}</h3>
-                <p>{{ i18n "feature_inventory_desc" }}</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-ellipsis-h"></i>
-                <h3>{{ i18n "feature_more_title" }}</h3>
-                <p>{{ i18n "feature_more_desc" }}</p>
+    {{ with .Params.problems }}
+    <!-- Problems -->
+    <section class="fp-section">
+        <div class="fp-inner">
+            <h2>{{ .title }}</h2>
+            <p class="fp-lead">{{ .lead }}</p>
+            <div class="fp-cards">
+                {{ range .items }}
+                <div class="fp-card">
+                    <i class="fas {{ .icon }}"></i>
+                    <h3>{{ .title }}</h3>
+                    <p>{{ .desc }}</p>
+                </div>
+                {{ end }}
             </div>
         </div>
     </section>
+    {{ end }}
 
-    <!-- Feature: Accounting Reports -->
-    <section id="feature-reports" style="background: #fff;">
-        <div class="feature-row">
-            <div class="feature-row-text">
-                <h2>{{ i18n "reports_detail_title" }}</h2>
-                <p>{{ i18n "reports_detail_desc" }}</p>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "reports_list_1" }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "reports_list_2" }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "reports_list_3" }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "reports_list_4" }}</li>
-                </ul>
-            </div>
-            <div class="feature-row-image">
-                <img src="/images/balancesheet.png" alt="{{ i18n "reports_img_alt" }}">
-            </div>
+    {{ with .Params.steps }}
+    <!-- How it works -->
+    <section class="fp-section alt" id="how-it-works">
+        <div class="fp-inner">
+            <h2>{{ .title }}</h2>
+            <p class="fp-lead">{{ .lead }}</p>
+            <ol class="fp-steps">
+                {{ range .items }}
+                <li>
+                    <h3>{{ .title }}</h3>
+                    <p>{{ .desc }}</p>
+                </li>
+                {{ end }}
+            </ol>
         </div>
     </section>
+    {{ end }}
 
-    <!-- Feature: Bills & Expense Management -->
-    <section id="feature-bills-expense" style="background: var(--light-bg);">
-        <div class="feature-row reverse">
-            <div class="feature-row-text">
-                <h2>{{ i18n "bills_detail_title" }}</h2>
-                <p>{{ i18n "bills_detail_desc" }}</p>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "bills_list_1" }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "bills_list_2" }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "bills_list_3" }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "bills_list_4" }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "bills_list_5" }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "bills_list_6" }}</li>
-                </ul>
-            </div>
-            <div class="feature-row-image">
-                <div class="image-slideshow" id="bills-slideshow">
-                    <div class="slide-wrapper">
-                        <img src="/images/vendorbill.png" alt="{{ i18n "bills_img_vendor_alt" }}" class="active">
-                        <img src="/images/expense.png" alt="{{ i18n "bills_img_expense_alt" }}">
-                    </div>
-                    <div class="slide-dots">
-                        <button class="slide-dot active" data-index="0"></button>
-                        <button class="slide-dot" data-index="1"></button>
-                    </div>
+    {{ with .Params.features }}
+    <!-- Features -->
+    <section class="fp-section">
+        <div class="fp-inner">
+            <h2>{{ .title }}</h2>
+            <p class="fp-lead">{{ .lead }}</p>
+            {{ range .items }}
+            <div class="fp-feature">
+                <div class="fp-feature-title">
+                    <i class="fas {{ .icon }}"></i>
+                    <h3>{{ .title }}</h3>
+                </div>
+                <div class="fp-feature-body">
+                    <p>{{ .desc }}</p>
+                    <ul class="fp-list">
+                        {{ range .points }}
+                        <li><i class="fas fa-check-circle"></i> {{ . }}</li>
+                        {{ end }}
+                    </ul>
                 </div>
             </div>
+            {{ end }}
         </div>
     </section>
+    {{ end }}
 
-    <!-- Feature: Daily Sales -->
-    <section id="feature-sales" style="background: var(--light-bg);">
-        <div class="feature-row reverse">
-            <div class="feature-row-text">
-                <h2>{{ i18n "sales_detail_title" }}</h2>
-                <p>{{ i18n "sales_detail_desc" }}</p>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "sales_list_1" }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "sales_list_2" }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "sales_list_3" }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "sales_list_4" }}</li>
-                    <li><i class="fas fa-check-circle"></i> {{ i18n "sales_list_5" }}</li>
-                </ul>
+    {{ with .Params.matching }}
+    <!-- Matching example -->
+    <section class="fp-section alt">
+        <div class="fp-inner">
+            <h2>{{ .title }}</h2>
+            <p class="fp-lead">{{ .lead }}</p>
+            <div class="fp-table-wrap">
+                <table class="fp-table">
+                    <thead>
+                        <tr>
+                            {{ range .headers }}<th>{{ . }}</th>{{ end }}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{ range .rows }}
+                        <tr>
+                            {{ range .cells }}<td>{{ . }}</td>{{ end }}
+                            <td class="{{ .status }}">{{ if eq .status "flag" }}<i class="fas fa-exclamation-triangle"></i> {{ else if eq .status "ok" }}<i class="fas fa-check"></i> {{ end }}{{ .result | safeHTML }}</td>
+                        </tr>
+                        {{ end }}
+                    </tbody>
+                </table>
             </div>
-            <div class="feature-row-image">
-                <img src="/images/dailysales.png" alt="{{ i18n "sales_img_alt" }}">
+            <p class="fp-note">{{ .note }}</p>
+        </div>
+    </section>
+    {{ end }}
+
+    {{ with .Params.accounting }}
+    <!-- Accounting perspective -->
+    <section class="fp-section">
+        <div class="fp-inner">
+            <h2>{{ .title }}</h2>
+            <p class="fp-lead">{{ .lead }}</p>
+            {{ range .items }}
+            <div class="fp-callout">
+                <h3>{{ .title }}</h3>
+                <p>{{ .desc }}</p>
+                {{ with .journal }}<div class="fp-journal">{{ . }}</div>{{ end }}
+            </div>
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
+
+    {{ with .Params.checklist }}
+    <!-- Checklist -->
+    <section class="fp-section alt">
+        <div class="fp-inner">
+            <h2>{{ .title }}</h2>
+            <p class="fp-lead">{{ .lead }}</p>
+            <ul class="fp-checklist">
+                {{ range .items }}
+                <li><i class="fas fa-check-square"></i> {{ . }}</li>
+                {{ end }}
+            </ul>
+        </div>
+    </section>
+    {{ end }}
+
+    {{ with .Params.faqs }}
+    <!-- FAQ -->
+    <section class="fp-section">
+        <div class="fp-inner">
+            <h2>{{ $.Params.faq_title }}</h2>
+            <div class="fp-faq">
+                {{ range . }}
+                <details>
+                    <summary>{{ .q }}</summary>
+                    <p>{{ .a }}</p>
+                </details>
+                {{ end }}
             </div>
         </div>
     </section>
+    {{ end }}
 
-    <!-- Why Choose Us -->
-    <section class="benefits">
-        <h2>{{ i18n "benefits_title" }}</h2>
-        <div class="benefits-grid">
-            <div class="benefit-item">
-                <h3>{{ i18n "benefit_efficiency_title" }}</h3>
-                <p>{{ i18n "benefit_efficiency_desc" }}</p>
-            </div>
-            <div class="benefit-item">
-                <h3>{{ i18n "benefit_cost_title" }}</h3>
-                <p>{{ i18n "benefit_cost_desc" }}</p>
-            </div>
-            <div class="benefit-item">
-                <h3>{{ i18n "benefit_compliance_title" }}</h3>
-                <p>{{ i18n "benefit_compliance_desc" }}</p>
-            </div>
-            <div class="benefit-item">
-                <h3>{{ i18n "benefit_security_title" }}</h3>
-                <p>{{ i18n "benefit_security_desc" }}</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Us -->
-    <section class="about-us" id="about-us">
-        <h2>{{ i18n "about_title" }}</h2>
-        <div class="about-container">
-            <div class="about-content">
-                <p>{{ i18n "about_p1" | safeHTML }}</p>
-                <p>{{ i18n "about_p2" | safeHTML }}</p>
-                <p>{{ i18n "about_p3" | safeHTML }}</p>
-            </div>
-        </div>
+    <!-- Final CTA -->
+    <section class="fp-final-cta">
+        <h2>{{ .Params.cta_title }}</h2>
+        <p>{{ .Params.cta_desc }}</p>
+        <a href="https://app.tikadata.com/register" class="cta-button">{{ .Params.cta_primary }}</a>
     </section>
 
     <!-- Contact -->
